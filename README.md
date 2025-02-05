@@ -1,1 +1,2 @@
 # The-Remnant-Project
+<!-- This readme file is to help people understand what your project is about, what your codebase includes, how to build and deploy the code, and how to contribute to the code -->
