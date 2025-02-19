@@ -1,0 +1,43 @@
+/* custom.css */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f8f1ee; /* soft cream-gray background */
+    color: #4a2c2a; /* dark brown text */
+}
+
+/* Customize the navbar */
+.navbar {
+    background-color: #7c3f58; /* burgundy */
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff !important;
+}
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+/* Footer styling */
+footer {
+    background-color: #7c3f58;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Card styling adjustments */
+.card {
+    margin-bottom: 1.5rem;
+    border: none;
+}
+.card img {
+    object-fit: cover;
+    height: 200px;
+}
+
+/* Make the active navigation link bold and italic */
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    font-style: italic;
+}
