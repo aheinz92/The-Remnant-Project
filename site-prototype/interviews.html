@@ -5,12 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Interviews - The Remnant Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,28 +59,32 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link active" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
+<main class="container my-5" id="main-content">
   <h1>Interviews</h1>
+  <p class="lead">Listen to firsthand accounts and personal memories that provide vital perspectives on historical events and community life.</p>
+
   <div class="row">
     <!-- Example Interview Card -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Elder">
+        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Jeremy Smith">
         <div class="card-body">
-          <h5 class="card-title">360-Degree Interview with Jeremy Smith</h5>
+          <h5 class="card-title">360° Interview with Jeremy Smith</h5>
+          <p>Community organizer discusses the history of neighborhood development and activism in the Central District.</p>
           <a href="#" class="btn btn-secondary">Watch Interview</a>
         </div>
       </div>
@@ -48,9 +92,10 @@
     <!-- More interview cards can go here -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Elder">
+        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Elizabeth Smalls">
         <div class="card-body">
-          <h5 class="card-title">360-Degree Interview with Elizabeth Smalls</h5>
+          <h5 class="card-title">360° Interview with Elizabeth Smalls</h5>
+          <p>Educator shares memories of teaching in Washington State from the 1960s through the 1990s.</p>
           <a href="#" class="btn btn-secondary">Watch Interview</a>
         </div>
       </div>
@@ -58,14 +103,23 @@
     <!-- More interview cards can go here -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Elder">
+        <img src="images/interview1.jpeg" class="card-img-top" alt="Interview with Jeremiah Huntington">
         <div class="card-body">
-          <h5 class="card-title">360-Degree Interview with Jeremiah Huntington</h5>
+          <h5 class="card-title">360° Interview with Jeremiah Huntington</h5>
+          <p>Local historian discusses preservation efforts and important historical sites in Kitsap County.</p>
           <a href="#" class="btn btn-secondary">Watch Interview</a>
         </div>
       </div>
     </div>
     <!-- More interview cards can go here -->
+  </div>
+
+  <div class="card mt-5">
+    <div class="card-body">
+      <h3>About Our Interviews</h3>
+      <p>The Remnant Project uses innovative 360-degree video technology to create immersive interview experiences. This approach allows viewers to feel present in the conversation and observe the full context of the interview environment.</p>
+      <p>All interviews are conducted with respect for the narrator's experiences and perspectives. Interviewees have the opportunity to review and approve their recordings before they are added to the archive.</p>
+    </div>
   </div>
 </main>
 
@@ -77,5 +131,61 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) button:nth-child(${
+            size === 'small' ? 1 : size === 'medium' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-clear', 'font-cozy');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) button:nth-child(${
+            style === 'clear' ? 1 : 2
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) button:nth-child(${
+            scheme === 'archive' ? 1 : scheme === 'contrast' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+</script>
 </body>
 </html>

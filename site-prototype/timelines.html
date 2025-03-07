@@ -5,12 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Timelines - The Remnant Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,34 +59,63 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link active" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
+<main class="container my-5" id="main-content">
   <h1>Timelines</h1>
+  <p class="lead">Explore historical events in chronological order to better understand their context and relationships.</p>
+
   <!-- Timeline Dropdown -->
   <div class="mb-3">
     <label for="timelineSelect" class="form-label">Select a Timeline:</label>
-    <select id="timelineSelect" class="form-select">
+    <select id="timelineSelect" class="form-select" aria-label="Select a timeline to display">
       <option selected>Kitsap County</option>
       <option>Bainbridge Island</option>
       <option>Historic Seattle</option>
-      <!-- More options can be added -->
+      <option>Civil Rights Movement in Washington</option>
+      <option>Indigenous History of Puget Sound</option>
     </select>
   </div>
   <!-- Placeholder Timeline Image -->
-  <div class="mb-4">
-    <img src="images/timeline.png" alt="Timeline Placeholder" class="img-fluid" style="width:100%; object-fit: cover;">
+  <div class="mb-4 card timeline-card p-3">
+    <img src="images/timeline.png" alt="Timeline showing historical events in Kitsap County" class="img-fluid rounded">
+    <div class="mt-3">
+      <h3>Kitsap County Timeline</h3>
+      <p>This timeline illustrates key events in Kitsap County's development from the 1850s through today, highlighting contributions from diverse community members and important historical moments.</p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3>Featured Event: 1942</h3>
+          <p>The Puget Sound Naval Shipyard expands dramatically during WWII, bringing significant demographic changes to Kitsap County.</p>
+          <a href="#" class="btn btn-secondary">Explore Related Items</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3>Featured Event: 1974</h3>
+          <p>The Boldt Decision affirms treaty fishing rights for Native American tribes in Washington State, with significant impacts for Kitsap County communities.</p>
+          <a href="#" class="btn btn-secondary">Explore Related Items</a>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -58,5 +127,61 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) button:nth-child(${
+            size === 'small' ? 1 : size === 'medium' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-clear', 'font-cozy');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) button:nth-child(${
+            style === 'clear' ? 1 : 2
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) button:nth-child(${
+            scheme === 'archive' ? 1 : scheme === 'contrast' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+</script>
 </body>
 </html>

@@ -5,12 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Archive Item - The Remnant Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
+  <style>
+    /* Right-align table labels */
+    .details-table th {
+      text-align: right;
+      padding-right: 10px;
+    }
+  </style>
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,32 +66,43 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
+<main class="container my-5" id="main-content">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="explore.html">Search & Explore</a></li>
+      <li class="breadcrumb-item"><a href="collection.html">Historical Photographs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Black Panthers (1969)</li>
+    </ol>
+  </nav>
+
   <h1>Black Panthers on steps of Legislative Building, Olympia</h1>
   <div class="text-center mb-4">
-    <img src="images/collectionitem3.png" alt="Item Image" class="img-fluid" style="height: 700px;">
+    <img src="images/collectionitem3.png" alt="Black Panthers standing on the steps of the Legislative Building in Olympia" class="img-fluid rounded" style="max-height: 700px;">
   </div>
-  <!-- Toggle Details Button -->
-  <div class="text-center">
-    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#detailsCollapse" aria-expanded="false" aria-controls="detailsCollapse">
-      Show Details
+
+  <!-- Item Details Button -->
+  <div class="text-center mb-4">
+    <button class="item-details-button" type="button" data-bs-toggle="collapse" data-bs-target="#detailsCollapse" aria-expanded="false" aria-controls="detailsCollapse">
+      Item Details
     </button>
   </div>
+
   <div class="collapse mt-4" id="detailsCollapse">
-    <table class="table table-bordered">
+    <table class="details-table">
       <tr>
         <th>Title</th>
         <td>Black Panthers on steps of Legislative Building, Olympia</td>
@@ -56,7 +114,7 @@
       <tr>
         <th>Description</th>
         <td>
-          This striking photograph, “Black Panthers on steps of Legislative Building, Olympia” is a snapshot of a larger story. In February, 1969 the state legislature was reviewing a law that restricted individual’s right to carry unconcealed weapons. The Black Panther Party of Seattle informed the public of their intent to protest the law, and in response Governor Evans called out the National Guard. The Guard soldiers patrolled the capitol for almost a week but with little action were pulled out of Olympia. It turned out that the Panthers had eyes on the inside. Their leader, Captain Aaron Dixon had a brother, Michael Dixon, who worked at the statehouse and was passing information to the Panthers on the National Guard’s activities. After the National Guard was gone for good, Michael notified Aaron, and the Panthers made their way down to Olympia where Aaron read a statement to the Ways and Means Committee. The rest of the group staged a brief protest, captured in this photograph.
+          This photograph documents members of the Black Panther Party of Seattle on the steps of the Legislative Building in Olympia in February, 1969. At this time, the state legislature was reviewing a law that restricted individuals' right to carry unconcealed weapons. The Black Panther Party informed the public of their intent to protest the law, and in response Governor Evans called out the National Guard. The Guard soldiers patrolled the capitol for almost a week but were eventually withdrawn. After the National Guard departed, the Panthers made their way to Olympia where Aaron Dixon, their leader, read a statement to the Ways and Means Committee. The rest of the group staged the protest captured in this photograph.
         </td>
       </tr>
       <tr>
@@ -77,10 +135,17 @@
         <th>Tags</th>
         <td>
           <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Protest</a>
-          <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Black &amp; White Photo</a>
+          <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Black & White Photo</a>
           <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Olympia Capitol</a>
           <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Guns</a>
-          <div class="btn btn-primary btn-sm me-1 mb-1">Suggest more tags…</div>
+          <button type="button" class="tag-button me-1 mb-1" onclick="toggleTagForm()">+ Suggest Tag</button>
+
+          <div id="tagForm" class="tag-form mt-2">
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" placeholder="Search existing tags or create new ones">
+              <button class="btn btn-secondary" type="button">Submit Tag</button>
+            </div>
+          </div>
         </td>
       </tr>
       <tr>
@@ -96,7 +161,29 @@
         <td>
           <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Item 1</a>
           <a href="searchresults.html" class="btn btn-secondary btn-sm me-1 mb-1">Item 2</a>
-          <div class="btn btn-primary btn-sm me-1 mb-1">Suggest a connection…</div>
+          <button type="button" class="tag-button me-1 mb-1" onclick="toggleConnectionForm()">+ Suggest Connection</button>
+
+          <div id="connectionForm" style="display: none;" class="mt-2">
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" placeholder="Search for items to connect">
+              <button class="btn btn-secondary" type="button">Submit</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Related Items</th>
+        <td>
+          <div class="row">
+            <div class="col-6">
+              <img src="images/item2.png" alt="Related item" class="img-fluid rounded mb-2">
+              <p class="small"><a href="#">Flyer for civil rights rally, 1969</a></p>
+            </div>
+            <div class="col-6">
+              <img src="images/item7.png" alt="Related item" class="img-fluid rounded mb-2">
+              <p class="small"><a href="#">Legislative notes on firearm laws, 1970</a></p>
+            </div>
+          </div>
         </td>
       </tr>
       <tr>
@@ -122,5 +209,106 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Toggle tag form visibility
+  function toggleTagForm() {
+    const form = document.getElementById('tagForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  }
+
+  // Toggle connection form visibility
+  function toggleConnectionForm() {
+    const form = document.getElementById('connectionForm');
+    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-smallest', 'font-size-smaller', 'font-size-medium', 'font-size-larger', 'font-size-largest');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) .buttons-row button[data-size="${size}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredFontSize', size);
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-cozy', 'font-clear', 'font-mono');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) .buttons-row button[data-font="${style}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredFontStyle', style);
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) .buttons-row button[data-scheme="${scheme}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredColorScheme', scheme);
+  }
+
+  // Load saved preferences on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Apply saved font size preference
+    const savedFontSize = localStorage.getItem('preferredFontSize') || 'medium';
+    changeFontSize(savedFontSize);
+
+    // Apply saved font style preference
+    const savedFontStyle = localStorage.getItem('preferredFontStyle') || 'cozy';
+    changeFont(savedFontStyle);
+
+    // Apply saved color scheme preference
+    const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'archive';
+    changeColorScheme(savedColorScheme);
+  });
+</script>
 </body>
 </html>

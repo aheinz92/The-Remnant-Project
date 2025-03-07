@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Explore - The Remnant Project</title>
+  <title>Search & Explore - The Remnant Project</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-cozy">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,42 +59,123 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link active" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link active" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
-  <h1>Explore the Archive</h1>
+<main class="container my-5" id="main-content">
+  <h1>Search & Explore the Archive</h1>
+  <p class="lead">Discover historical items, stories, and collections from Washington State's diverse communities.</p>
+
   <!-- Search Bar -->
-  <form action="searchresults.html" method="GET">
-    <div class="input-group mb-3">
-      <input type="text" name="query" class="form-control" placeholder="Search items...">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
+  <form action="searchresults.html" method="GET" role="search" class="mb-4">
+    <div class="input-group">
+      <label for="searchQuery" class="sr-only">Search the archive</label>
+      <input id="searchQuery" type="text" name="query" class="form-control" placeholder="Search by keyword, location, time period...">
+      <button class="btn btn-secondary" type="submit">
+        <i class="fas fa-search me-2"></i>Search
+      </button>
     </div>
   </form>
 
-  <!-- Filter Dropdown for Categories & Tags -->
-  <div class="mb-3">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown"
-              aria-expanded="false">
-        Filter by Categories &amp; Tags
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-        <li><a class="dropdown-item" href="#">Tag 1</a></li>
-        <li><a class="dropdown-item" href="#">Tag 2</a></li>
-        <li><a class="dropdown-item" href="#">Category A</a></li>
-        <li><a class="dropdown-item" href="#">Category B</a></li>
-      </ul>
+  <!-- Tag Search Section -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3>Browse by Tag</h3>
+      <form action="searchresults.html" method="GET" role="search" class="mb-3">
+        <div class="input-group">
+          <input type="text" name="tag" class="form-control" placeholder="Search for a tag...">
+          <button class="btn btn-secondary" type="submit">
+            <i class="fas fa-search me-2"></i>Find Tag
+          </button>
+        </div>
+      </form>
+
+      <div class="popular-tags">
+        <h5>Popular Tags:</h5>
+        <div class="tag-list">
+          <button class="tag-button">Civil Rights <span class="tag-count">24</span></button>
+          <button class="tag-button">Photographs <span class="tag-count">18</span></button>
+          <button class="tag-button">Seattle <span class="tag-count">15</span></button>
+          <button class="tag-button">1960s <span class="tag-count">12</span></button>
+          <button class="tag-button">Education <span class="tag-count">9</span></button>
+          <button class="tag-button">Community <span class="tag-count">7</span></button>
+          <button class="tag-button">Family <span class="tag-count">6</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Options -->
+  <div class="row mb-4">
+    <div class="col-md-6 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Filter by Categories</h5>
+          <div class="d-flex flex-wrap">
+            <button class="tag-button">Photographs</button>
+            <button class="tag-button">Documents</button>
+            <button class="tag-button">Oral Histories</button>
+            <button class="tag-button">Artifacts</button>
+            <button class="tag-button">News Articles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Filter by Time Period</h5>
+          <div class="d-flex flex-wrap">
+            <button class="tag-button">Pre-1900</button>
+            <button class="tag-button">1900-1950</button>
+            <button class="tag-button">1950-1970</button>
+            <button class="tag-button">1970-2000</button>
+            <button class="tag-button">2000-Present</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mt-5">Featured Items</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/collectionitem1.png" class="card-img-top" alt="Featured archive item">
+        <div class="card-body">
+          <h5 class="card-title">Girls Reserve, Phyllis Wheatley/ YWCA</h5>
+          <a href="item.html" class="btn btn-secondary">View Item</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/collectionitem3.png" class="card-img-top" alt="Featured archive item">
+        <div class="card-body">
+          <h5 class="card-title">Black Panthers on the steps of the Legislative Building</h5>
+          <a href="item.html" class="btn btn-secondary">View Item</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/collectionitem5.png" class="card-img-top" alt="Featured archive item">
+        <div class="card-body">
+          <h5 class="card-title">Family gathering in Spokane</h5>
+          <a href="item.html" class="btn btn-secondary">View Item</a>
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -67,5 +188,94 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-smallest', 'font-size-smaller', 'font-size-medium', 'font-size-larger', 'font-size-largest');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) .buttons-row button[data-size="${size}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredFontSize', size);
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-cozy', 'font-clear', 'font-mono');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) .buttons-row button[data-font="${style}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredFontStyle', style);
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) .buttons-row button');
+    buttons.forEach(button => {
+      button.classList.remove('btn-secondary');
+      button.classList.add('btn-outline-secondary');
+    });
+
+    // Find the correct button by its data attribute
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) .buttons-row button[data-scheme="${scheme}"]`);
+    activeButton.classList.remove('btn-outline-secondary');
+    activeButton.classList.add('btn-secondary');
+
+    // Store the preference
+    localStorage.setItem('preferredColorScheme', scheme);
+  }
+
+  // Load saved preferences on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Apply saved font size preference
+    const savedFontSize = localStorage.getItem('preferredFontSize') || 'medium';
+    changeFontSize(savedFontSize);
+
+    // Apply saved font style preference
+    const savedFontStyle = localStorage.getItem('preferredFontStyle') || 'cozy';
+    changeFont(savedFontStyle);
+
+    // Apply saved color scheme preference
+    const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'archive';
+    changeColorScheme(savedColorScheme);
+  });
+</script>
 </body>
 </html>

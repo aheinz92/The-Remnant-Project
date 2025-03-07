@@ -5,12 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Special Collection - The Remnant Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,29 +59,32 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
-  <h1>Unsung heroes of our history, captured on camera</h1>
-  <p class="lead">Discover the untold stories of everyday trailblazers whose quiet courage shaped our world.</p>
+<main class="container my-5" id="main-content">
+  <h1>Historical Photographs: Untold Stories</h1>
+  <p class="lead">A collection of photography documenting community life, important events, and everyday moments across Washington State.</p>
+
   <div class="row">
     <!-- Example Item Card -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/collectionitem1.png" class="card-img-top" alt="Item in Collection">
+        <img src="images/collectionitem1.png" class="card-img-top" alt="Girls Reserve at YWCA East Cherry Branch">
         <div class="card-body">
           <h5 class="card-title">Girls Reserve, Phyllis Wheatley/ YWCA East Cherry Branch</h5>
+          <p class="card-text">1946</p>
           <a href="item.html" class="btn btn-secondary">View Item</a>
         </div>
       </div>
@@ -49,9 +92,10 @@
     <!-- Example Item Card -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/collectionitem2.png" class="card-img-top" alt="Item in Collection">
+        <img src="images/collectionitem2.png" class="card-img-top" alt="Jitterbuggers dancing in Seattle">
         <div class="card-body">
-          <h5 class="card-title">Jitterbuggers in Seattle, ca. 1944</h5>
+          <h5 class="card-title">Jitterbuggers in Seattle</h5>
+          <p class="card-text">circa 1944</p>
           <a href="item.html" class="btn btn-secondary">View Item</a>
         </div>
       </div>
@@ -59,34 +103,48 @@
     <!-- More cards can be added as needed -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/collectionitem3.png" class="card-img-top" alt="Item in Collection">
+        <img src="images/collectionitem3.png" class="card-img-top" alt="Black Panthers protesting on Legislative Building steps">
         <div class="card-body">
           <h5 class="card-title">Black Panthers on the steps of the Legislative Building</h5>
+          <p class="card-text">1969</p>
           <a href="item.html" class="btn btn-secondary">View Item</a>
         </div>
       </div>
     </div>
-    <!-- More cards can be added as needed -->
+    <!-- More cards -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/collectionitem4.png" class="card-img-top" alt="Item in Collection">
+        <img src="images/collectionitem4.png" class="card-img-top" alt="George Washington with his dog">
         <div class="card-body">
           <h5 class="card-title">George Washington and his dog</h5>
+          <p class="card-text">circa 1860</p>
           <a href="item.html" class="btn btn-secondary">View Item</a>
         </div>
       </div>
     </div>
-    <!-- More cards can be added as needed -->
+    <!-- More cards -->
     <div class="col-md-4">
       <div class="card">
-        <img src="images/collectionitem5.png" class="card-img-top" alt="Item in Collection">
+        <img src="images/collectionitem5.png" class="card-img-top" alt="Family gathering in Spokane">
         <div class="card-body">
-          <h5 class="card-title">Black families in Spokane</h5>
+          <h5 class="card-title">Family gathering in Spokane</h5>
+          <p class="card-text">1952</p>
           <a href="item.html" class="btn btn-secondary">View Item</a>
         </div>
       </div>
     </div>
-    <!-- More cards can be added as needed -->
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h3>About this Collection</h3>
+          <p>This collection brings together photographs from multiple sources, documenting lives and experiences that are often missing from traditional historical archives. These images provide important visual evidence of community life, cultural events, social gatherings, and political activism across Washington State during the 20th century.</p>
+          <p>Many of these photographs were donated by community members who recognized the importance of preserving visual records of their families and neighborhoods. Others come from institutional archives that have been made accessible through digitization efforts.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -98,5 +156,61 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) button:nth-child(${
+            size === 'small' ? 1 : size === 'medium' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-clear', 'font-cozy');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) button:nth-child(${
+            style === 'clear' ? 1 : 2
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) button:nth-child(${
+            scheme === 'archive' ? 1 : scheme === 'contrast' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+</script>
 </body>
 </html>

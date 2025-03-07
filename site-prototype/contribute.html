@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contribute - The Remnant Project</title>
+  <title>Share Your Story - The Remnant Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -19,35 +59,159 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link active" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
-  <h1>Contribute to the Archive</h1>
+<main class="container my-5" id="main-content">
+  <h1>Want to be part of the archive?</h1>
+  <p class="lead">Share your story, images, or artifacts to help preserve our collective history for future generations.</p>
+
+  <div class="alert alert-info" role="alert">
+    <i class="fas fa-info-circle me-2"></i>
+    <strong>Note:</strong> All submissions will be reviewed by our team of archivists before being added to the collection.
+  </div>
+
+  <!-- Example Submission Toggle -->
+  <div class="example-toggle" onclick="toggleExample()">
+    <strong>Not sure what to do?</strong> Click here to see examples of how to submit items
+  </div>
+
+  <!-- Example Submission -->
+  <div class="example-submission" id="exampleSubmission">
+    <div class="example-header">
+      Both ways of sharing are valuable - you decide how much detail to provide!
+    </div>
+    <div class="example-content">
+      <div class="example-side">
+        <h4>Basic Submission</h4>
+        <img src="images/demo_submission.jpg" alt="Sample submission image">
+        <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975. This was one of the few times the whole family was together.</p>
+      </div>
+      <div class="example-side">
+        <h4>Detailed Submission</h4>
+        <img src="images/demo_submission.jpg" alt="Sample submission image">
+        <p><strong>Title:</strong> Johnson Family Reunion, 1967</p>
+        <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975.</p>
+        <p><strong>Date:</strong> June 14, 1967</p>
+        <p><strong>Location:</strong> Jefferson Park, Seattle</p>
+        <p><strong>People:</strong> Robert Johnson (grandfather), Martha Johnson (grandmother), and their six children with families</p>
+        <p><strong>Tags:</strong> Family History, Central District, 1960s, Community Gatherings</p>
+        <p><strong>Historical Context:</strong> During this time, the Central District was the center of Black culture in Seattle, as redlining had restricted where Black families could purchase homes.</p>
+      </div>
+    </div>
+  </div>
+
   <form>
-    <div class="mb-3">
-      <label for="contributorName" class="form-label">Your Name (or leave blank to contribute anonymously):</label>
-      <input type="text" class="form-control" id="contributorName" placeholder="Name">
+    <!-- File Upload Section - First thing visible -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3>1. Upload Your Media</h3>
+        <div class="mb-3">
+          <label for="mediaUpload" class="form-label">Upload photos, documents, videos, or audio files:</label>
+          <input class="form-control" type="file" id="mediaUpload" multiple>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="contributionText" class="form-label">Your Contribution</label>
-      <textarea class="form-control" id="contributionText" rows="4" placeholder="Enter text or story..."></textarea>
+
+    <!-- Story Information Section - Second thing visible -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3>2. Tell Us Your Story</h3>
+        <div class="mb-3">
+          <label for="contributionText" class="form-label">Describe your item or share your story:</label>
+          <textarea class="form-control" id="contributionText" rows="5" placeholder="Tell us about this item. What is it? Why is it important? When and where is it from? Who is involved?"></textarea>
+          <small class="text-muted mt-2 d-block">This is the most important part of your submission - please share as much detail as you feel comfortable with.</small>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="mediaUpload" class="form-label">Upload Media (optional):</label>
-      <input class="form-control" type="file" id="mediaUpload">
+
+    <!-- Optional Information - Expandable -->
+    <div class="card mb-4">
+      <div class="card-header" role="button" data-bs-toggle="collapse" data-bs-target="#optionalInfo" aria-expanded="false" aria-controls="optionalInfo">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="mb-0">3. Optional Details (Click to Expand)</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="collapse" id="optionalInfo">
+        <div class="card-body">
+
+          <div class="mb-3">
+            <label for="contributorName" class="form-label">Your Name (leave blank to submit anonymously):</label>
+            <input type="text" class="form-control" id="contributorName" placeholder="Your name">
+          </div>
+
+          <div class="mb-3">
+            <label for="contributionTitle" class="form-label">Title for this item:</label>
+            <input type="text" class="form-control" id="contributionTitle" placeholder="Give your submission a descriptive title">
+          </div>
+
+          <div class="mb-3">
+            <label for="dateField" class="form-label">Date or Time Period:</label>
+            <input type="text" class="form-control" id="dateField" placeholder="When did this happen? (year, decade, etc.)">
+          </div>
+
+          <div class="mb-3">
+            <label for="locationField" class="form-label">Location:</label>
+            <input type="text" class="form-control" id="locationField" placeholder="Where did this take place?">
+          </div>
+
+          <div class="mb-3">
+            <label for="peopleField" class="form-label">People:</label>
+            <input type="text" class="form-control" id="peopleField" placeholder="Who is in this story or image?">
+          </div>
+
+          <!-- Tags Section -->
+          <div class="mb-3">
+            <label class="form-label">Suggested Tags:</label>
+            <div class="d-flex flex-wrap mb-2">
+              <button class="tag-button">Family</button>
+              <button class="tag-button">Photo</button>
+              <button class="tag-button">Central District</button>
+              <button class="tag-button">1950s</button>
+              <button type="button" id="addTagBtn" class="tag-button" onclick="toggleTagForm()">+ Add Tag</button>
+            </div>
+            <div id="tagForm" class="tag-form">
+              <!-- Tag form appears when Add Tag is clicked -->
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" placeholder="Enter a tag...">
+                <button class="btn btn-secondary" type="button">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="contextField" class="form-label">Historical Context:</label>
+            <textarea class="form-control" id="contextField" rows="3" placeholder="Any historical background that helps understand this item?"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="permissionsField" class="form-label">Usage Permissions:</label>
+            <select class="form-select" id="permissionsField">
+              <option selected>Public domain - anyone can use this content</option>
+              <option>Educational use only - can be used for teaching and research</option>
+              <option>Private - viewable in the archive but not for reuse</option>
+              <option>Custom - please describe below</option>
+            </select>
+            <textarea class="form-control mt-2" id="customPermissions" rows="2" placeholder="If you selected 'Custom', please explain your usage preferences here"></textarea>
+          </div>
+
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-secondary">Submit Contribution</button>
+
+    <button type="submit" class="btn btn-primary btn-lg">Submit Your Story</button>
   </form>
 </main>
 
@@ -59,5 +223,81 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Toggle Example Section
+  function toggleExample() {
+    const example = document.getElementById('exampleSubmission');
+    if (example.style.display === 'block') {
+      example.style.display = 'none';
+    } else {
+      example.style.display = 'block';
+    }
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) button:nth-child(${
+            size === 'small' ? 1 : size === 'medium' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-clear', 'font-cozy');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) button:nth-child(${
+            style === 'clear' ? 1 : 2
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) button:nth-child(${
+            scheme === 'archive' ? 1 : scheme === 'contrast' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Toggle tag form visibility
+  function toggleTagForm() {
+    const tagForm = document.getElementById('tagForm');
+    if (tagForm.style.display === 'block') {
+      tagForm.style.display = 'none';
+    } else {
+      tagForm.style.display = 'block';
+    }
+  }
+</script>
 </body>
 </html>

@@ -6,13 +6,53 @@
   <title>Search Results - The Remnant Project</title>
   <!-- Bootstrap CSS (using CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <!-- Custom CSS -->
   <link href="css/custom.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-clear">
+
+<!-- Accessibility Toggle Button -->
+<div class="accessibility-toggle" onclick="toggleAccessibilityPanel()">
+  <i class="fas fa-universal-access"></i>
+</div>
+
+<!-- Accessibility Panel -->
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility Options</h3>
+
+  <div class="accessibility-section">
+    <label>Text Size:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smallest" onclick="changeFontSize('smallest')" data-size="smallest">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-smaller" onclick="changeFontSize('smaller')" data-size="smaller">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-medium" onclick="changeFontSize('medium')" data-size="medium">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-larger" onclick="changeFontSize('larger')" data-size="larger">A</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-size btn-font-size-largest" onclick="changeFontSize('largest')" data-size="largest">A</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Font Style:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-cozy" onclick="changeFont('cozy')" data-font="cozy">Cozy</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-clear" onclick="changeFont('clear')" data-font="clear">Clear</button>
+      <button class="btn btn-sm btn-outline-secondary btn-font-style btn-font-style-mono" onclick="changeFont('mono')" data-font="mono">Mono</button>
+    </div>
+  </div>
+
+  <div class="accessibility-section">
+    <label>Color Scheme:</label>
+    <div class="buttons-row">
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive" onclick="changeColorScheme('archive')" data-scheme="archive">Archive</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast" onclick="changeColorScheme('contrast')" data-scheme="contrast">Contrast</button>
+      <button class="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless" onclick="changeColorScheme('colorless')" data-scheme="colorless">Colorless</button>
+    </div>
+  </div>
+</div>
 
 <!-- Header (same for every page) -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html">The Remnant Project</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -21,119 +61,247 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link active" href="explore.html">Explore</a></li>
+        <li class="nav-item"><a class="nav-link active" href="explore.html">Search & Explore</a></li>
         <li class="nav-item"><a class="nav-link" href="places.html">Places</a></li>
         <li class="nav-item"><a class="nav-link" href="people.html">People</a></li>
         <li class="nav-item"><a class="nav-link" href="interviews.html">Interviews</a></li>
         <li class="nav-item"><a class="nav-link" href="timelines.html">Timelines</a></li>
-        <li class="nav-item"><a class="nav-link" href="contribute.html">Contribute</a></li>
+        <li class="nav-item"><a class="nav-link" href="contribute.html">Share Your Story</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="container my-5">
-  <h1>Explore the Archive</h1>
+<main class="container my-5" id="main-content">
+  <h1>Search Results</h1>
 
   <!-- Search Bar that simulates a query submission -->
-  <form action="searchresults.html" method="GET" class="mb-4">
+  <form action="searchresults.html" method="GET" class="mb-4" role="search">
     <div class="input-group">
-      <input type="text" name="query" class="form-control" placeholder="Search items...">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
+      <label for="searchQuery" class="sr-only">Search the archive</label>
+      <input id="searchQuery" type="text" name="query" class="form-control" placeholder="Search items..." value="Civil Rights">
+      <button class="btn btn-secondary" type="submit">
+        <i class="fas fa-search me-2"></i>Search
+      </button>
     </div>
   </form>
 
-  <!-- Cards grid: 8 typical cards + 1 special card -->
-  <div class="row">
-    <!-- Cards 1 to 8 -->
-    <!-- Card 1 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item1.png" class="card-img-top" alt="Item 1">
-        <div class="card-body">
-          <h5 class="card-title">R. Kahlon, Insurgent #1, 2013, acrylic and graphite on canvas</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <p class="mb-0">Showing 25 results for "<strong>Civil Rights</strong>"</p>
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort: Relevance
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+        <li><a class="dropdown-item" href="#">Relevance</a></li>
+        <li><a class="dropdown-item" href="#">Date (Newest)</a></li>
+        <li><a class="dropdown-item" href="#">Date (Oldest)</a></li>
+        <li><a class="dropdown-item" href="#">A-Z</a></li>
+      </ul>
     </div>
-    <!-- Card 2 -->
-    <div class="col-md-4">
+  </div>
+
+  <!-- Filter Options -->
+  <div class="row mb-4">
+    <div class="col-md-3">
       <div class="card mb-3">
-        <img src="images/item2.png" class="card-img-top" alt="Item 2">
+        <div class="card-header">Filter Results</div>
         <div class="card-body">
-          <h5 class="card-title">Flyer for the exhibit Precarious Art: Artificial Boundaries</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item3.png" class="card-img-top" alt="Item 3">
-        <div class="card-body">
-          <h5 class="card-title">Sankofa bird carving</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 4 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item4.png" class="card-img-top" alt="Item 4">
-        <div class="card-body">
-          <h5 class="card-title">Sankofa bird colorful string art</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 5 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item5.png" class="card-img-top" alt="Item 5">
-        <div class="card-body">
-          <h5 class="card-title">Poems on Various Subjects by Phillis Wheatley</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 6 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item6.png" class="card-img-top" alt="Item 6">
-        <div class="card-body">
-          <h5 class="card-title">Letter from Mrs. J. H Adams of Macon, Georgia, to the Bethlehem Baptist Association in Chicago, Illinois</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 7 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item7.png" class="card-img-top" alt="Item 7">
-        <div class="card-body">
-          <h5 class="card-title">Notes on a bid document for emergency relief</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
-        </div>
-      </div>
-    </div>
-    <!-- Card 8 -->
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img src="images/item8.png" class="card-img-top" alt="Item 8">
-        <div class="card-body">
-          <h5 class="card-title">Photo of the oldest African American Baptist church</h5>
-          <a href="item.html" class="btn btn-secondary">View Item</a>
+          <h6>Item Type</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="typePhoto">
+            <label class="form-check-label" for="typePhoto">
+              Photographs (14)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="typeDocument">
+            <label class="form-check-label" for="typeDocument">
+              Documents (8)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="typeAudio">
+            <label class="form-check-label" for="typeAudio">
+              Audio (2)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="typeArtifact">
+            <label class="form-check-label" for="typeArtifact">
+              Artifacts (1)
+            </label>
+          </div>
+
+          <hr>
+
+          <h6>Tags</h6>
+          <div class="input-group mb-2">
+            <input type="text" class="form-control form-control-sm" placeholder="Search for a tag...">
+            <button class="btn btn-secondary btn-sm" type="button">Go</button>
+          </div>
+          <div class="mb-2">
+            <div class="tag-list">
+              <button class="tag-button">Civil Rights <span class="tag-count">24</span></button>
+              <button class="tag-button">Protest <span class="tag-count">8</span></button>
+              <button class="tag-button">1969 <span class="tag-count">5</span></button>
+              <button class="tag-button">Olympia <span class="tag-count">3</span></button>
+            </div>
+          </div>
+
+          <hr>
+
+          <h6>Time Period</h6>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="period1950s">
+            <label class="form-check-label" for="period1950s">
+              1950s (6)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="period1960s">
+            <label class="form-check-label" for="period1960s">
+              1960s (11)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="period1970s">
+            <label class="form-check-label" for="period1970s">
+              1970s (5)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="periodOther">
+            <label class="form-check-label" for="periodOther">
+              Other (3)
+            </label>
+          </div>
+
+          <button class="btn btn-secondary mt-3 w-100">Apply Filters</button>
         </div>
       </div>
     </div>
 
-    <!-- Card 9: Special card with centered text -->
-    <div class="col-md-4">
-      <div class="card mb-3 d-flex align-items-center justify-content-center" style="min-height: 250px;">
-        <div class="card-body">
-          <p class="card-text text-center">Show 17 more results&hellip;</p>
+    <div class="col-md-9">
+      <div class="row">
+        <!-- Cards 1 to 8 -->
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item1.png" class="card-img-top" alt="R. Kahlon artwork of an Insurgent">
+            <div class="card-body">
+              <h5 class="card-title">R. Kahlon, Insurgent #1, 2013</h5>
+              <p class="card-text small">Acrylic and graphite on canvas</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item2.png" class="card-img-top" alt="Flyer for art exhibit">
+            <div class="card-body">
+              <h5 class="card-title">Flyer: Precarious Art Exhibition</h5>
+              <p class="card-text small">1968</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item3.png" class="card-img-top" alt="Sankofa bird wooden carving">
+            <div class="card-body">
+              <h5 class="card-title">Sankofa bird carving</h5>
+              <p class="card-text small">Circa 1970s</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item4.png" class="card-img-top" alt="Colorful Sankofa bird string art">
+            <div class="card-body">
+              <h5 class="card-title">Sankofa bird string art</h5>
+              <p class="card-text small">1975</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item5.png" class="card-img-top" alt="Book by Phillis Wheatley">
+            <div class="card-body">
+              <h5 class="card-title">Poems on Various Subjects</h5>
+              <p class="card-text small">Rare 1786 edition</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item6.png" class="card-img-top" alt="Historical letter from Mrs. Adams">
+            <div class="card-body">
+              <h5 class="card-title">Letter from Mrs. J. H Adams</h5>
+              <p class="card-text small">1963</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item7.png" class="card-img-top" alt="Notes on emergency relief document">
+            <div class="card-body">
+              <h5 class="card-title">Notes on emergency relief</h5>
+              <p class="card-text small">1965</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/item8.png" class="card-img-top" alt="Oldest African American Baptist church building">
+            <div class="card-body">
+              <h5 class="card-title">First Baptist Church</h5>
+              <p class="card-text small">Historic photo, 1958</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 9 -->
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <img src="images/collectionitem3.png" class="card-img-top" alt="Black Panthers protest">
+            <div class="card-body">
+              <h5 class="card-title">Black Panthers at Legislative Building</h5>
+              <p class="card-text small">1969</p>
+              <a href="item.html" class="btn btn-secondary">View Item</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="col-12">
+          <nav aria-label="Search results pagination">
+            <ul class="pagination justify-content-center">
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
@@ -149,5 +317,61 @@
 
 <!-- Bootstrap JS (using CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Accessibility Controls Script -->
+<script>
+  // Toggle Accessibility Panel
+  function toggleAccessibilityPanel() {
+    const panel = document.getElementById('accessibilityPanel');
+    panel.classList.toggle('open');
+  }
+
+  // Font Size Control
+  function changeFontSize(size) {
+    document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+    document.body.classList.add(`font-size-${size}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(1) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(1) button:nth-child(${
+            size === 'small' ? 1 : size === 'medium' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Font Style Control
+  function changeFont(style) {
+    document.body.classList.remove('font-clear', 'font-cozy');
+    document.body.classList.add(`font-${style}`);
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(2) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(2) button:nth-child(${
+            style === 'clear' ? 1 : 2
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+
+  // Color Scheme Control
+  function changeColorScheme(scheme) {
+    document.body.classList.remove('contrast-theme', 'colorless-theme');
+    if (scheme !== 'archive') {
+      document.body.classList.add(`${scheme}-theme`);
+    }
+
+    // Update active button appearance
+    const buttons = document.querySelectorAll('.accessibility-section:nth-child(3) button');
+    buttons.forEach(button => button.classList.replace('btn-secondary', 'btn-outline-secondary'));
+
+    const activeButton = document.querySelector(`.accessibility-section:nth-child(3) button:nth-child(${
+            scheme === 'archive' ? 1 : scheme === 'contrast' ? 2 : 3
+    })`);
+    activeButton.classList.replace('btn-outline-secondary', 'btn-secondary');
+  }
+</script>
 </body>
 </html>
