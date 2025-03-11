@@ -30,6 +30,11 @@ CREATE TABLE Items (
     title VARCHAR(255),
     initial_notes TEXT,         -- loose initial text notes when scanning items and no clear title exists
     description TEXT,
+	
+	-- These fields support Optical Character Recognition (OCR) or other text extraction methods,
+	-- to allow searchable texts and readable pages.
+	text_extraction LONGTEXT,   -- pure text content extracted from scans and images
+	text_reader_audio VARCHAR(1024),  -- the file location path for a pre-generated text-to-speech audio file
 
     -- Archival Status states whether the archive item is ready to be displayed, or whether it is
 	-- newly added and still awaiting review before it should be shown.
