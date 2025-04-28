@@ -14,6 +14,7 @@ import Places from './pages/Places';
 import SearchResults from './pages/SearchResults';
 import Timelines from './pages/Timelines';
 import ArtifactsApparel from './pages/ArtifactsApparel';
+import NotionEmbedPage from './pages/NotionEmbedPage'; // Import the new page
 
 function App() {
     // Font Size Control
@@ -64,6 +65,7 @@ function App() {
             <Route path="/searchresults" element={<SearchResults changeFontSize={changeFontSize} changeFont={changeFont} changeColorScheme={changeColorScheme} />} />
             <Route path="/timelines" element={<Timelines changeFontSize={changeFontSize} changeFont={changeFont} changeColorScheme={changeColorScheme} />} />
 <Route path="/artifacts-apparel" element={<ArtifactsApparel changeFontSize={changeFontSize} changeFont={changeFont} changeColorScheme={changeColorScheme} />} />
+            <Route path="/notion-embed" element={<NotionEmbedPage changeFontSize={changeFontSize} changeFont={changeFont} changeColorScheme={changeColorScheme} />} /> {/* Add route for Notion Embed Page */}
             {/* Redirect all other routes to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

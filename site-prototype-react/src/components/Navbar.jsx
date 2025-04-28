@@ -47,6 +47,13 @@ const Navbar = () => {
                         >
                             Artifacts &amp; Apparel
                         </Nav.Link>
+<Nav.Link
+                            as={Link}
+                            to="/notion-embed"
+                            className={location.pathname === '/notion-embed' ? 'active' : ''}
+                        >
+                            Notion Embed
+                        </Nav.Link>
                     </Nav>
                 </BootstrapNavbar.Collapse>
             </Container>
