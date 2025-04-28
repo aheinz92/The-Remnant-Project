@@ -43,15 +43,15 @@ body {
 }
 
 /* Font families */
-.font-cozy {
+body.font-cozy {
     font-family: 'Georgia', serif;
 }
 
-.font-clear {
+body.font-clear {
     font-family: 'Arial', sans-serif;
 }
 
-.font-mono {
+body.font-mono {
     font-family: 'Courier New', 'Consolas', monospace;
 }
 
@@ -78,35 +78,35 @@ body {
 
 /* Apply font size to all text elements */
 body {
-    font-size: var(--base-font-size, 1rem);
+    font-size: var(--base-font-size, 1rem) !important; /* Ensure base size applies */
     line-height: 1.5;
 }
 
 h1 {
-    font-size: calc(var(--base-font-size, 1rem) * 2.5);
+    font-size: calc(var(--base-font-size, 1rem) * 2.5) !important;
     margin-bottom: 1rem;
 }
 
 h2 {
-    font-size: calc(var(--base-font-size, 1rem) * 2);
+    font-size: calc(var(--base-font-size, 1rem) * 2) !important;
     margin-bottom: 0.75rem;
 }
 
 h3, h4, h5 {
-    font-size: calc(var(--base-font-size, 1rem) * 1.5);
+    font-size: calc(var(--base-font-size, 1rem) * 1.5) !important;
     margin-bottom: 0.5rem;
 }
 
 p, li, td, th, input, textarea, label, .btn, .nav-link, .card-title, .lead {
-    font-size: var(--base-font-size, 1rem);
+    font-size: var(--base-font-size, 1rem) !important; /* Apply to common elements and classes */
 }
 
 .lead {
-    font-size: calc(var(--base-font-size, 1rem) * 1.25);
+    font-size: calc(var(--base-font-size, 1rem) * 1.25) !important;
 }
 
 small, .small {
-    font-size: calc(var(--base-font-size, 1rem) * 0.85);
+    font-size: calc(var(--base-font-size, 1rem) * 0.85) !important;
 }
 
 /* Customize the navbar */
@@ -301,11 +301,11 @@ footer {
     text-align: center;
 }
 
-.btn-font-size-smallest { font-size: 0.7rem; }
-.btn-font-size-smaller { font-size: 0.85rem; }
-.btn-font-size-medium { font-size: 1rem; }
-.btn-font-size-larger { font-size: 1.15rem; }
-.btn-font-size-largest { font-size: 1.3rem; }
+.btn-font-size-smallest { font-size: 0.7rem !important; }
+.btn-font-size-smaller { font-size: 0.85rem !important; }
+.btn-font-size-medium { font-size: 1rem !important; }
+.btn-font-size-larger { font-size: 1.15rem !important; }
+.btn-font-size-largest { font-size: 1.3rem !important; }
 
 .btn-font-style {
     flex: 1;
@@ -313,15 +313,15 @@ footer {
 }
 
 .btn-font-style-cozy {
-    font-family: 'Georgia', serif;
+    font-family: 'Georgia', serif !important;
 }
 
 .btn-font-style-clear {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif !important;
 }
 
 .btn-font-style-mono {
-    font-family: 'Courier New', 'Consolas', monospace;
+    font-family: 'Courier New', 'Consolas', monospace !important;
 }
 
 .btn-color-scheme {
@@ -331,33 +331,39 @@ footer {
 }
 
 .btn-color-scheme-archive {
-    background-color: #f8f1ee;
-    color: #4a2c2a;
-    border-color: #7c3f58;
+    background-color: #f8f1ee !important;
+    color: #4a2c2a !important;
+    border-color: #7c3f58 !important;
 }
 
 .btn-color-scheme-archive:hover {
-    color: #4a2c2a;
+    background-color: #f8f1ee !important; /* Keep same on hover */
+    color: #4a2c2a !important;
+    border-color: #7c3f58 !important;
 }
 
 .btn-color-scheme-contrast {
-    background-color: #f0f0f0;
-    color: #000000;
-    border-color: #8b0000;
+    background-color: #f0f0f0 !important;
+    color: #000000 !important;
+    border-color: #8b0000 !important;
 }
 
 .btn-color-scheme-contrast:hover {
-    color: #000000;
+    background-color: #f0f0f0 !important; /* Keep same on hover */
+    color: #000000 !important;
+    border-color: #8b0000 !important;
 }
 
 .btn-color-scheme-colorless {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #333333;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-color: #333333 !important;
 }
 
 .btn-color-scheme-colorless:hover {
-    color: #000000;
+    background-color: #ffffff !important; /* Keep same on hover */
+    color: #000000 !important;
+    border-color: #333333 !important;
 }
 
 /* Custom form styling */

@@ -35,38 +35,17 @@ const Navbar = () => {
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            to="/places"
-                            className={location.pathname === '/places' ? 'active' : ''}
-                        >
-                            Places
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/people"
-                            className={location.pathname === '/people' ? 'active' : ''}
-                        >
-                            People
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/interviews"
-                            className={location.pathname === '/interviews' ? 'active' : ''}
-                        >
-                            Interviews
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
-                            to="/timelines"
-                            className={location.pathname === '/timelines' ? 'active' : ''}
-                        >
-                            Timelines
-                        </Nav.Link>
-                        <Nav.Link
-                            as={Link}
                             to="/contribute"
                             className={location.pathname === '/contribute' ? 'active' : ''}
                         >
                             Share Your Story
+                        </Nav.Link>
+<Nav.Link
+                            as={Link}
+                            to="/artifacts-apparel"
+                            className={location.pathname === '/artifacts-apparel' ? 'active' : ''}
+                        >
+                            Artifacts &amp; Apparel
                         </Nav.Link>
                     </Nav>
                 </BootstrapNavbar.Collapse>

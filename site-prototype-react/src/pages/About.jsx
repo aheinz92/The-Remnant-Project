@@ -1,12 +1,31 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 // Import components
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AccessibilityPanel from '../components/AccessibilityPanel';
 
+// Import partner logos
+import blackmuseLogo from '../assets/images/blackmuse.svg';
+import lachLogo from '../assets/images/living arts cultural heritage.png';
+import seattleGriotLogo from '../assets/images/seattle griot project.png';
+import wsblilogo from '../assets/images/washington state black legacy institute.jpg';
+import evergreenLogo from '../assets/images/evergreen state college.png';
+import naacpLogo from '../assets/images/naacp.png';
+
+
 const About = ({ changeFontSize, changeFont, changeColorScheme }) => {
+
+    const partnerOrgs = [
+        { name: 'BlackMuse', logo: blackmuseLogo },
+        { name: 'Living Arts Cultural Heritage', logo: lachLogo },
+        { name: 'Seattle Griot', logo: seattleGriotLogo },
+        { name: 'Washington State Black Legacy Institute', logo: wsblilogo },
+        { name: 'Evergreen State College Tacoma Campus', logo: evergreenLogo },
+        { name: 'National Association for the Advancement of Colored People (NAACP)', logo: naacpLogo }
+    ];
+
     return (
         <div className="font-clear">
             <AccessibilityPanel
@@ -18,29 +37,120 @@ const About = ({ changeFontSize, changeFont, changeColorScheme }) => {
 
             <main className="container my-5" id="main-content">
                 <h1>About The Remnant Project</h1>
-                <p className="lead">The Remnant Project is dedicated to preserving, digitizing, and sharing the historical records and stories of Black and Indigenous communities in Washington State at Tacoma Evergreen State College.</p>
+                <p>
+                    The Remnant Project is part of a national movement of Black and Indigenous history organizations working together to document the human footprint and ensure state-based curricula accurately reflect our histories. Based at Tacoma Evergreen State College, we are dedicated to preserving, digitizing, and sharing the historical records and stories of these communities in Washington State.
+                </p>
 
-                <p>Our mission is to preserve these stories in ways that honor the people they come from, using methods that maintain authentic context and connection, and place them in the hands of the communities they represent. We are creating a digital archive, accessible online and in virtual reality, where these stories can be experienced, shared, and celebrated by everyone.</p>
+                <p>
+                    Our collective mission focuses on preserving, sharing, and teaching the true stories that have shaped our communities. We advocate for a more inclusive and truthful representation in education, ensuring these vital narratives are recognized as integral parts of our shared history. We strive to preserve these stories in ways that honor the people they come from, using methods that maintain authentic context and connection, placing them back into the hands of the communities they represent.
+                </p>
 
-                <p>We are also working to turn these archives into tools for learning—state-approved curriculum that ensures future generations grow up knowing the full history of the diverse communities who helped shape this region. This will ensure that these important historical narratives are taught in schools and recognized as integral parts of our shared history, honoring the legacy of these communities and acknowledging their vital contributions.</p>
-
-                <Row className="mt-5">
-                    <Col md={6}>
-                        <h2>Our Values</h2>
-                        <ul>
-                            <li>Community ownership of historical narratives</li>
-                            <li>Accurate representation and contextualization</li>
-                            <li>Accessible preservation techniques</li>
-                            <li>Inclusive historical education</li>
-                            <li>Technological innovation in archival practices</li>
-                        </ul>
+                {/* Explore and Join Sections */}
+                <Row className="mb-4"> {/* Adjusted spacing */}
+                    <Col md={6} className="mb-4 mb-md-0">
+                        <Card className="h-100 shadow-sm">
+                            <Card.Body className="d-flex flex-column"> {/* Ensure body takes height */}
+                                <Card.Title as="h2">Explore the Archive</Card.Title>
+                                <Card.Text>
+                                    Explore our comprehensive digital archives for in-depth research on key aspects of Black history. These resources provide valuable insights into the lives and contributions of Black communities, leaders, and organizations throughout history. Our focus areas include:
+                                </Card.Text>
+                                <ul>
+                                    <li>Black Churches</li>
+                                    <li>Black Masonic Organizations</li>
+                                    <li>Black Families</li>
+                                    <li>Early Black Pioneers</li>
+                                    <li>Early Black Educators</li>
+                                    <li>Community Groups</li>
+                                    <li>Black Women Leaders</li>
+                                    <li>Life and Times</li>
+                                </ul>
+                                <Card.Text> {/* Push to bottom if needed */}
+                                    We are creating a digital archive, accessible online and potentially in virtual reality, where these stories can be experienced, shared, and celebrated by everyone.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
                     <Col md={6}>
-                        <h2>Our Team</h2>
-                        <p>The Remnant Project is led by a diverse team of historians, archivists, educators, and community members, all committed to preserving Washington's rich cultural heritage through innovative and respectful methods.</p>
-                        <p>We collaborate with local communities, educational institutions, and technology partners to ensure our archives are comprehensive, accessible, and meaningful.</p>
+                        <Card className="h-100 shadow-sm">
+                            <Card.Body className="d-flex flex-column"> {/* Ensure body takes height */}
+                                <Card.Title as="h2">Join the Movement</Card.Title>
+                                <Card.Text>
+                                    Healing isn’t just about sitting with our pain—it’s about moving through it, transforming it into something powerful, something that feeds the future. That’s why we invite you to roll up your sleeves and join us in this sacred work. Whether it’s moderating healing sessions, archiving endangered African American and Indigenous archives, or documenting our elders’ testimonies, there’s a place for you here.
+                                </Card.Text>
+                                <Card.Text>
+                                    Come on in. Join the Healing Circle, and then step into the work of archiving, preserving, and uplifting our history. We need each other, and we need you.
+                                </Card.Text>
+                                <Card.Text as="strong">Ways to get involved:</Card.Text>
+                                <ul>
+                                    <li>Join Our Healing Circles</li>
+                                    <li>Archive Our History</li>
+                                    <li>Document Elder Testimonies</li>
+                                    <li>Research & Map History</li>
+                                    <li>Create Merch</li>
+                                    <li>Digital Innovation & Virtual Preservation Team</li>
+                                    <li>Create Curriculum</li>
+                                    <li>Share the Good Word</li>
+                                </ul>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 </Row>
+
+                {/* Our Story & Achievements Section */}
+                <Row> {/* Adjusted spacing */}
+                    <Col>
+                        <Card className="shadow-sm">
+                            <Card.Body>
+                                <Card.Title as="h2">Our Story & Achievements</Card.Title>
+                                <Card.Text>
+                                    The Remnant Project has played a significant role in preserving history and advocating for recognition:
+                                </Card.Text>
+                                {/* TODO: Implement a horizontal timeline component here */}
+                                <ul>
+                                    <li><strong>2004:</strong> Played a pivotal role in renaming the Bremerton Post Office to honor John Henry Turpin and establishing the Justice Spearman Justice Center on Bainbridge Island.</li>
+                                    <li><strong>2019:</strong> Preserved over 16,000 historical documents, photographs, and newspapers, while also interviewing elders in the community to capture their invaluable stories and insights.</li>
+                                    <li><strong>2022:</strong> Officially renamed “Nigga Lakes” to honor Black pioneers Nathaniel J. Sargent and Rodney White.</li>
+                                    <li><strong>2023:</strong> Helped identify over 70,000 restricted properties in neighborhoods across Washington, shedding light on the history of exclusion and segregation.</li>
+                                    <li><strong>2024:</strong> Renamed the Kitsap Regional Library branch to Bremerton - Dr. Martin Luther King Jr.</li>
+                                    <li><strong>Present:</strong> With Washington’s 250th anniversary approaching, immediate funding and support are essential to ensure Black, Indigenous, and underrepresented histories are fully integrated into state initiatives and preserved for future generations.</li>
+                                </ul>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+
+                {/* Partner Organizations Section */}
+                <Row className="mb-4"> {/* Adjusted spacing */}
+                    <Col>
+                        <Card className="shadow-sm">
+                            <Card.Body>
+                                <Card.Title as="h2">Partner Organizations</Card.Title>
+                                <Card.Text>
+                                    We are proud to collaborate with organizations dedicated to preserving and sharing Black and Indigenous history:
+                                </Card.Text>
+                                <Row className="justify-content-center"> {/* Center the cards */}
+                                    {partnerOrgs.map((org, index) => (
+                                        <Col key={index} sm={6} md={4} lg={3} className="d-flex"> {/* Use d-flex for equal height cards in row */}
+                                            <Card className="text-center flex-fill"> {/* Use flex-fill to make cards fill column height */}
+                                                <Card.Body className="d-flex flex-column">
+                                                    <Card.Title as="h5" className="mb-3">{org.name}</Card.Title>
+                                                    {/* Image added below the body content */}
+                                                </Card.Body>
+                                                 <Card.Img
+                                                    variant="bottom"
+                                                    src={org.logo}
+                                                    alt={`${org.name} logo`}
+                                                    style={{ maxHeight: '200px', width: 'auto', objectFit: 'contain', padding: '10px', marginTop: 'auto' }} // Style the image
+                                                />
+                                            </Card>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+
             </main>
 
             <Footer />
