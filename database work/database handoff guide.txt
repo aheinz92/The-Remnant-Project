@@ -119,7 +119,3 @@ Discuss these options and your project vision with potential collaborators.
 * If considering using existing archival tools, share these documents with the archivists or managers who would configure that software. They can assess how well the schema's concepts can be mapped onto their chosen platform.
 
 No matter which path you choose, this database schema provides a robust and thoughtful foundation for organizing the rich historical materials of the Remnant Project. It defines the essential information and relationships needed to build a valuable digital archive.
-
-=========================================================
-End of Document
-=========================================================

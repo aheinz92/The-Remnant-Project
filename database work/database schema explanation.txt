@@ -270,7 +270,3 @@ This system of linking tables is powerful because:
 * It avoids repeating information (an item's title is stored only once).
 * It ensures consistency (if you update an item's title, it's updated everywhere it's referenced).
 * It allows you to ask complex questions (e.g., "Show me all photos related to items in the 'Civil Rights' category created between 1960 and 1970").
-
-=========================================================
-End of Document
-=========================================================

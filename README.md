@@ -7,9 +7,7 @@ This section provides details about the database schema designed for the Remnant
 
 ### Database Handoff Guide
 
-=========================================================
-Remnant Project: Handoff Guide - Using Your Database Schema
-=========================================================
+#### Remnant Project: Handoff Guide - Using Your Database Schema
 
 **Introduction: What is This Document For?**
 
@@ -129,15 +127,11 @@ Discuss these options and your project vision with potential collaborators.
 
 No matter which path you choose, this database schema provides a robust and thoughtful foundation for organizing the rich historical materials of the Remnant Project. It defines the essential information and relationships needed to build a valuable digital archive.
 
-=========================================================
-End of Document
-=========================================================
+---
 
 ### Database Schema Explanation
 
-=========================================================
-Remnant Project: Understanding this Database Design
-=========================================================
+#### Remnant Project: Understanding this Database Design
 
 **Introduction: What is This Document?**
 
@@ -407,7 +401,3 @@ This system of linking tables is powerful because:
 * It avoids repeating information (an item's title is stored only once).
 * It ensures consistency (if you update an item's title, it's updated everywhere it's referenced).
 * It allows you to ask complex questions (e.g., "Show me all photos related to items in the 'Civil Rights' category created between 1960 and 1970").
-
-=========================================================
-End of Document
-=========================================================
