@@ -1,11 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import partner logos
 import blackmuseLogo from '../assets/images/blackmuse.svg';
 import lachLogo from '../assets/images/living arts cultural heritage.png';
@@ -15,7 +10,7 @@ import evergreenLogo from '../assets/images/evergreen state college.png';
 import naacpLogo from '../assets/images/naacp.png';
 
 
-const About = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const About = () => { // Removed props
 
     const partnerOrgs = [
         { name: 'BlackMuse', logo: blackmuseLogo },
@@ -27,14 +22,8 @@ const About = ({ changeFontSize, changeFont, changeColorScheme }) => {
     ];
 
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>About The Remnant Project</h1>
                 <p>
@@ -153,8 +142,8 @@ const About = ({ changeFontSize, changeFont, changeColorScheme }) => {
 
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

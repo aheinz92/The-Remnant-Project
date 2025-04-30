@@ -1,24 +1,13 @@
 import React from 'react';
 import { Container } from 'react-bootstrap'; // Keep Container
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import styles if needed, though react-bootstrap handles much of it
 import '../assets/styles/custom.css';
 
-const NotionEmbedPage = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const NotionEmbedPage = () => { // Removed props
   return (
-    <div className="font-clear"> {/* Match font style class if needed */}
-      <AccessibilityPanel
-        changeFontSize={changeFontSize}
-        changeFont={changeFont}
-        changeColorScheme={changeColorScheme}
-      />
-      <Navbar />
-
+    <> {/* Use Fragment instead of div */}
+      {/* Removed AccessibilityPanel and Navbar */}
       <main className="container my-5" id="main-content">
         <h1 className="text-3xl font-bold mb-4">Notion Embed</h1>
 
@@ -35,8 +24,8 @@ const NotionEmbedPage = ({ changeFontSize, changeFont, changeColorScheme }) => {
         </Container>
       </main>
 
-      <Footer />
-    </div>
+      {/* Removed Footer */}
+    </>
   );
 };
 

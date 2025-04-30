@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Breadcrumb, Collapse, Button, Form, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import collectionItem3Img from '../assets/images/collectionitem3.png';
 import item2Img from '../assets/images/item2.png';
 import item7Img from '../assets/images/item7.png';
 
-const Item = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Item = () => { // Removed props
     const [detailsOpen, setDetailsOpen] = useState(false);
     const [tagFormVisible, setTagFormVisible] = useState(false);
     const [connectionFormVisible, setConnectionFormVisible] = useState(false);
@@ -30,14 +25,8 @@ const Item = ({ changeFontSize, changeFont, changeColorScheme }) => {
     };
 
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <Breadcrumb>
                     <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/explore" }}>Search & Explore</Breadcrumb.Item>
@@ -188,8 +177,8 @@ const Item = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Collapse>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

@@ -1,11 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import artifactsImage from '../assets/images/artifacts.png'; // Assuming this is the correct path
 import apparelImage from '../assets/images/apparel.png';   // Assuming this is the correct path
@@ -13,16 +8,10 @@ import apparelImage from '../assets/images/apparel.png';   // Assuming this is t
 // Import styles if needed, though react-bootstrap handles much of it
 import '../assets/styles/custom.css';
 
-const ArtifactsApparel = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const ArtifactsApparel = () => { // Removed props
   return (
-    <div className="font-clear"> {/* Match font style class if needed */}
-      <AccessibilityPanel
-        changeFontSize={changeFontSize}
-        changeFont={changeFont}
-        changeColorScheme={changeColorScheme}
-      />
-      <Navbar />
-
+    <> {/* Use Fragment instead of div */}
+      {/* Removed AccessibilityPanel and Navbar */}
       <main className="container my-5" id="main-content">
         <h1 className="text-3xl font-bold mb-4">Artifacts & Apparel</h1>
 
@@ -71,8 +60,8 @@ const ArtifactsApparel = ({ changeFontSize, changeFont, changeColorScheme }) => 
         </Row>
       </main>
 
-      <Footer />
-    </div>
+      {/* Removed Footer */}
+    </>
   );
 };
 

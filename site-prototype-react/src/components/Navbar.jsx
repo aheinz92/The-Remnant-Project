@@ -33,6 +33,20 @@ const Navbar = () => {
                         >
                             Search & Explore
                         </Nav.Link>
+<Nav.Link
+                            as={Link}
+                            to="/places"
+                            className={location.pathname === '/places' ? 'active' : ''}
+                        >
+                            Places
+                        </Nav.Link>
+<Nav.Link
+                            as={Link}
+                            to="/exhibits"
+                            className={location.pathname === '/exhibits' ? 'active' : ''}
+                        >
+                            Exhibits
+                        </Nav.Link>
                         <Nav.Link
                             as={Link}
                             to="/contribute"

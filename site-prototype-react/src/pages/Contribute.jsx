@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Card, InputGroup, Collapse } from 'react-bootstrap';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import demoSubmissionImg from '../assets/images/demo_submission.jpg';
 
-const Contribute = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Contribute = () => { // Removed props
     const [exampleVisible, setExampleVisible] = useState(false);
     const [tagFormVisible, setTagFormVisible] = useState(false);
     const [optionalInfoOpen, setOptionalInfoOpen] = useState(false);
@@ -27,14 +22,8 @@ const Contribute = ({ changeFontSize, changeFont, changeColorScheme }) => {
     };
 
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Want to be part of the archive?</h1>
                 <p className="lead">Share your story, images, or artifacts to help preserve our collective history for future generations.</p>
@@ -206,8 +195,8 @@ const Contribute = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Form>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

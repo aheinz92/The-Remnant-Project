@@ -2,11 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import collectionItem1Img from '../assets/images/collectionitem1.png';
 import collectionItem2Img from '../assets/images/collectionitem2.png';
@@ -14,16 +9,10 @@ import collectionItem3Img from '../assets/images/collectionitem3.png';
 import collectionItem4Img from '../assets/images/collectionitem4.png';
 import collectionItem5Img from '../assets/images/collectionitem5.png';
 
-const Collection = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Collection = () => { // Removed props
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Historical Photographs: Untold Stories</h1>
                 <p className="lead">A collection of photography documenting community life, important events, and everyday moments across Washington State.</p>
@@ -103,8 +92,8 @@ const Collection = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Row>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

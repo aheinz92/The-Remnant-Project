@@ -2,11 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Form, InputGroup, Button, Card, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import item1Img from '../assets/images/item1.png';
 import item2Img from '../assets/images/item2.png';
@@ -18,16 +13,10 @@ import item7Img from '../assets/images/item7.png';
 import item8Img from '../assets/images/item8.png';
 import collectionItem3Img from '../assets/images/collectionitem3.png';
 
-const SearchResults = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const SearchResults = () => { // Removed props
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Search Results</h1>
 
@@ -194,8 +183,8 @@ const SearchResults = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Row>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

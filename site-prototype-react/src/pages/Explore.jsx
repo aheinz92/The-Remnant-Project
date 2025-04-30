@@ -2,26 +2,15 @@ import React from 'react';
 import { Container, Row, Col, Form, InputGroup, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import collectionItem1Img from '../assets/images/collectionitem1.png';
 import collectionItem3Img from '../assets/images/collectionitem3.png';
 import collectionItem5Img from '../assets/images/collectionitem5.png';
 
-const Explore = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Explore = () => { // Removed props
     return (
-        <div className="font-cozy">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Search & Explore the Archive</h1>
                 <p className="lead">Discover historical items, stories, and collections from Washington State's diverse communities.</p>
@@ -134,8 +123,8 @@ const Explore = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Row>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

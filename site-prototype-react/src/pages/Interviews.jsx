@@ -1,24 +1,13 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import interview1Img from '../assets/images/interview1.jpeg';
 
-const Interviews = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Interviews = () => { // Removed props
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Interviews</h1>
                 <p className="lead">Listen to firsthand accounts and personal memories that provide vital perspectives on historical events and community life.</p>
@@ -70,8 +59,8 @@ const Interviews = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Card>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 

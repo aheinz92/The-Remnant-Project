@@ -1,24 +1,13 @@
 import React from 'react';
 import { Container, Row, Col, Form, Card } from 'react-bootstrap';
 
-// Import components
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AccessibilityPanel from '../components/AccessibilityPanel';
-
 // Import images
 import timelineImg from '../assets/images/timeline.png';
 
-const Timelines = ({ changeFontSize, changeFont, changeColorScheme }) => {
+const Timelines = () => { // Removed props
     return (
-        <div className="font-clear">
-            <AccessibilityPanel
-                changeFontSize={changeFontSize}
-                changeFont={changeFont}
-                changeColorScheme={changeColorScheme}
-            />
-            <Navbar />
-
+        <> {/* Use Fragment instead of div */}
+            {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Timelines</h1>
                 <p className="lead">Explore historical events in chronological order to better understand their context and relationships.</p>
@@ -70,8 +59,8 @@ const Timelines = ({ changeFontSize, changeFont, changeColorScheme }) => {
                 </Row>
             </main>
 
-            <Footer />
-        </div>
+            {/* Removed Footer */}
+        </>
     );
 };
 
