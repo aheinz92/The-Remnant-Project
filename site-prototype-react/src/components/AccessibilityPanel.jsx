@@ -10,12 +10,10 @@ const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) =
     return (
         <>
             <div className="accessibility-toggle" onClick={toggleAccessibilityPanel}>
-                <i className="fas fa-universal-access"></i>
+                Change Site Appearance
             </div>
 
             <div className={`accessibility-panel ${isPanelOpen ? 'open' : ''}`} id="accessibilityPanel">
-                <h3>Accessibility Options</h3>
-
                 <div className="accessibility-section">
                     <label>Text Size:</label>
                     <div className="buttons-row">
@@ -87,6 +85,13 @@ const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) =
                 <div className="accessibility-section">
                     <label>Color Scheme:</label>
                     <div className="buttons-row">
+                        <button
+                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-legacy"
+                            onClick={() => changeColorScheme('legacy')}
+                            data-scheme="legacy"
+                        >
+                            Legacy
+                        </button>
                         <button
                             className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive"
                             onClick={() => changeColorScheme('archive')}

@@ -28,44 +28,50 @@ const Contribute = () => { // Removed props
                 <h1>Want to be part of the archive?</h1>
                 <p className="lead">Share your story, images, or artifacts to help preserve our collective history for future generations.</p>
 
-                <div className="alert alert-info" role="alert">
+                <div>
                     <i className="fas fa-info-circle me-2"></i>
-                    <strong>Note:</strong> All submissions will be reviewed by our team of archivists before being added to the collection.
+                    <strong>Note:</strong> <em>All submissions will be reviewed by our team of archivists before being added to the collection.</em>
                 </div>
 
                 {/* Example Submission Toggle */}
-                <div className="example-toggle" onClick={toggleExample}>
-                    <strong>Not sure what to do?</strong> Click here to see examples of how to submit items
+                <div className="alert alert-info mt-4 d-flex justify-content-between align-items-center" onClick={toggleExample} style={{ cursor: 'pointer' }}>
+                    <div>
+                        <i className="fas fa-question-circle me-2"></i>
+                        <strong>Not sure what to do?</strong> Click here to see examples of how to submit items
+                    </div>
+                    <i className={`fas ${exampleVisible ? 'fa-chevron-up' : 'fa-chevron-down'} ms-auto`}></i>
                 </div>
 
                 {/* Example Submission */}
-                <div className="example-submission" style={{ display: exampleVisible ? 'block' : 'none' }}>
-                    <div className="example-header">
-                        Both ways of sharing are valuable - you decide how much detail to provide!
-                    </div>
-                    <div className="example-content">
-                        <div className="example-side">
-                            <h4>Basic Submission</h4>
-                            <img src={demoSubmissionImg} alt="Sample submission image" />
-                            <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975. This was one of the few times the whole family was together.</p>
+                <Collapse in={exampleVisible}>
+                    <div className="example-submission">
+                        <div className="example-header">
+                            Both ways of sharing are valuable - you decide how much detail to provide!
                         </div>
-                        <div className="example-side">
-                            <h4>Detailed Submission</h4>
-                            <img src={demoSubmissionImg} alt="Sample submission image" />
-                            <p><strong>Title:</strong> Johnson Family Reunion, 1967</p>
-                            <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975.</p>
-                            <p><strong>Date:</strong> June 14, 1967</p>
-                            <p><strong>Location:</strong> Jefferson Park, Seattle</p>
-                            <p><strong>People:</strong> Robert Johnson (grandfather), Martha Johnson (grandmother), and their six children with families</p>
-                            <p><strong>Tags:</strong> Family History, Central District, 1960s, Community Gatherings</p>
-                            <p><strong>Historical Context:</strong> During this time, the Central District was the center of Black culture in Seattle, as redlining had restricted where Black families could purchase homes.</p>
+                        <div className="example-content">
+                            <div className="example-side">
+                                <h4>Basic Submission</h4>
+                                <img src={demoSubmissionImg} alt="Sample submission image" />
+                                <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975. This was one of the few times the whole family was together.</p>
+                            </div>
+                            <div className="example-side">
+                                <h4>Detailed Submission</h4>
+                                <img src={demoSubmissionImg} alt="Sample submission image" />
+                                <p><strong>Title:</strong> Johnson Family Reunion, 1967</p>
+                                <p><strong>Your story:</strong> This photo shows my grandparents and extended family at our annual reunion in 1967. The photo was taken at Jefferson Park. My grandfather was one of the first Black business owners in the Central District, running a barbershop from 1946-1975.</p>
+                                <p><strong>Date:</strong> June 14, 1967</p>
+                                <p><strong>Location:</strong> Jefferson Park, Seattle</p>
+                                <p><strong>People:</strong> Robert Johnson (grandfather), Martha Johnson (grandmother), and their six children with families</p>
+                                <p><strong>Tags:</strong> Family History, Central District, 1960s, Community Gatherings</p>
+                                <p><strong>Historical Context:</strong> During this time, the Central District was the center of Black culture in Seattle, as redlining had restricted where Black families could purchase homes.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Collapse>
 
                 <Form>
                     {/* File Upload Section */}
-                    <Card className="mb-4">
+                    <Card className="my-4">
                         <Card.Body>
                             <h3>1. Upload Your Media</h3>
                             <Form.Group className="mb-3">

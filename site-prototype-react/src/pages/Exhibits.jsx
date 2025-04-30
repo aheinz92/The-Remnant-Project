@@ -1,52 +1,43 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// Import images
-import collection1Img from '../assets/images/collection1.png';
-import collection2Img from '../assets/images/collection2.png';
-import collection3Img from '../assets/images/collection3.png';
+// Import exhibit images
+import exhibit1Img from '../assets/images/exhibit1 - Black Anchors Cover.png';
+import exhibit2Img from '../assets/images/exhibit2 - The Case of Missing Remnants.png';
+import exhibit3Img from '../assets/images/exhibit3 - The Black PRess.png';
+import exhibit4Img from '../assets/images/exhibit4 - Red Pedagogy.png';
+import exhibit5Img from '../assets/images/exhibit5 - We THe PEople.png';
+import exhibit6Img from '../assets/images/exhibit6 - The Black Church.png';
 
 
 const Exhibits = () => {
+    const exhibitsData = [
+        { id: 1, img: exhibit1Img, alt: 'Black Anchors Cover', link: '/exhibit/1' },
+        { id: 2, img: exhibit2Img, alt: 'The Case of Missing Remnants Cover', link: '/exhibit/2' },
+        { id: 3, img: exhibit3Img, alt: 'The Black Press Cover', link: '/exhibit/3' },
+        { id: 4, img: exhibit4Img, alt: 'Red Pedagogy Cover', link: '/exhibit/4' },
+        { id: 5, img: exhibit5Img, alt: 'We The People Cover', link: '/exhibit/5' },
+        { id: 6, img: exhibit6Img, alt: 'The Black Church Cover', link: '/exhibit/6' },
+    ];
+
     return (
         <main className="container my-5" id="main-content">
             {/* Special Collections Section */}
             <section>
                 <h2 className="mb-4">Special Exhibits and Collections</h2> {/* Updated Heading */}
-                <Row>
-                    {/* Example Card 1 */}
-                    <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={collection1Img} alt="Collection of civil rights documents" />
-                            <Card.Body>
-                                <Card.Title>Documents that changed the Civil Rights Movements</Card.Title>
-                                <Link to="/collection" className="btn btn-secondary">View Collection</Link>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    {/* Example Card 2 */}
-                    <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={collection2Img} alt="Collection of historical photographs" />
-                            <Card.Body>
-                                <Card.Title>Historical Photographs: Untold Stories</Card.Title>
-                                <Link to="/collection" className="btn btn-secondary">View Collection</Link>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-
-                    {/* Example Card 3 */}
-                    <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={collection3Img} alt="George Washington photographs" />
-                            <Card.Body>
-                                <Card.Title>The Legacy of George Washington</Card.Title>
-                                <Link to="/collection" className="btn btn-secondary">View Collection</Link>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                <Row className="exhibit-gallery">
+                    {exhibitsData.map((exhibit) => (
+                        <Col key={exhibit.id} sm={6} md={4} lg={3} className="mb-4 px-2"> {/* Add Col for grid layout and horizontal padding */}
+                           <Link to={exhibit.link} style={{ textDecoration: 'none' }}>
+                               <img
+                                   className="exhibit-image"
+                                   src={exhibit.img}
+                                   alt={exhibit.alt}
+                               />
+                           </Link>
+                        </Col>
+                    ))}
                 </Row>
             </section>
         </main>

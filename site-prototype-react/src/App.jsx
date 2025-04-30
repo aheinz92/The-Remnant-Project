@@ -35,8 +35,10 @@ function App() {
 
     // Color Scheme Control
     const changeColorScheme = (scheme) => {
-        document.body.classList.remove('contrast-theme', 'colorless-theme');
-        if (scheme !== 'archive') {
+        // Remove all existing theme classes
+        document.body.classList.remove('archive-theme', 'contrast-theme', 'colorless-theme');
+        // Add the new theme class if it's not the default (legacy)
+        if (scheme !== 'legacy') {
             document.body.classList.add(`${scheme}-theme`);
         }
         localStorage.setItem('preferredColorScheme', scheme);

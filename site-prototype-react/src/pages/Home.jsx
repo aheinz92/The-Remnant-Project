@@ -16,7 +16,7 @@ const Home = () => { // Removed props
     return (
         <> {/* Use Fragment instead of div */}
             {/* Removed AccessibilityPanel and Navbar */}
-            <main className="container my-5" id="main-content">
+            <main className="container py-5" id="main-content">
                 {/* Splash Section */}
                 <section className="text-center mb-5">
                     <h1 className="display-4">Welcome to The Remnant Project</h1>

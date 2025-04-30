@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <BootstrapNavbar expand="lg" aria-label="Main navigation">
             <Container>
-                <BootstrapNavbar.Brand as={Link} to="/">The Remnant Project</BootstrapNavbar.Brand>
+                <BootstrapNavbar.Brand as={Link} to="/" className="navbar-brand-custom">The Remnant Project</BootstrapNavbar.Brand>
                 <BootstrapNavbar.Toggle aria-controls="mainNavbar" />
                 <BootstrapNavbar.Collapse id="mainNavbar">
                     <Nav className="ms-auto">
@@ -33,14 +33,14 @@ const Navbar = () => {
                         >
                             Search & Explore
                         </Nav.Link>
-<Nav.Link
+                        <Nav.Link
                             as={Link}
                             to="/places"
                             className={location.pathname === '/places' ? 'active' : ''}
                         >
                             Places
                         </Nav.Link>
-<Nav.Link
+                        <Nav.Link
                             as={Link}
                             to="/exhibits"
                             className={location.pathname === '/exhibits' ? 'active' : ''}
@@ -53,20 +53,6 @@ const Navbar = () => {
                             className={location.pathname === '/contribute' ? 'active' : ''}
                         >
                             Share Your Story
-                        </Nav.Link>
-<Nav.Link
-                            as={Link}
-                            to="/artifacts-apparel"
-                            className={location.pathname === '/artifacts-apparel' ? 'active' : ''}
-                        >
-                            Artifacts &amp; Apparel
-                        </Nav.Link>
-<Nav.Link
-                            as={Link}
-                            to="/notion-embed"
-                            className={location.pathname === '/notion-embed' ? 'active' : ''}
-                        >
-                            Notion Embed
                         </Nav.Link>
                     </Nav>
                 </BootstrapNavbar.Collapse>

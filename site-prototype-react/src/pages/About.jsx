@@ -8,6 +8,8 @@ import seattleGriotLogo from '../assets/images/seattle griot project.png';
 import wsblilogo from '../assets/images/washington state black legacy institute.jpg';
 import evergreenLogo from '../assets/images/evergreen state college.png';
 import naacpLogo from '../assets/images/naacp.png';
+import artifactsImage from '../assets/images/artifacts.png';
+import apparelImage from '../assets/images/apparel.png';
 
 
 const About = () => { // Removed props
@@ -103,6 +105,49 @@ const About = () => { // Removed props
                                     <li><strong>2024:</strong> Renamed the Kitsap Regional Library branch to Bremerton - Dr. Martin Luther King Jr.</li>
                                     <li><strong>Present:</strong> With Washington’s 250th anniversary approaching, immediate funding and support are essential to ensure Black, Indigenous, and underrepresented histories are fully integrated into state initiatives and preserved for future generations.</li>
                                 </ul>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+{/* Artifacts and Apparel Sections */}
+                <Row className="mb-4">
+                    <Col md={6} className="mb-4 mb-md-0 d-flex"> {/* Use d-flex for equal height */}
+                        <Card className="h-100 shadow-sm flex-fill"> {/* Use flex-fill */}
+                            <Card.Body className="d-flex flex-column">
+                                <Card.Title as="h2">Artifacts</Card.Title>
+                                <Card.Text>
+                                    Purchase digital assets to help preserve and share
+                                    Black and Indigenous history. Each asset funds the
+                                    protection and digitization of invaluable artifacts,
+                                    ensuring our stories live on for generations.
+                                </Card.Text>
+                                {/* Image moved below text, centered, max height */}
+                                <img
+                                    src={artifactsImage}
+                                    alt="Artifacts preview"
+                                    style={{ maxHeight: '250px', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '1rem' }}
+                                    className="img-fluid mt-3" // Added margin top for spacing
+                                />
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={6} className="d-flex"> {/* Use d-flex for equal height */}
+                        <Card className="h-100 shadow-sm flex-fill"> {/* Use flex-fill */}
+                            <Card.Body className="d-flex flex-column">
+                                <Card.Title as="h2">Apparel</Card.Title>
+                                <Card.Text>
+                                    Support the movement by purchasing exclusive
+                                    apparel. Each piece tells a story and funds our
+                                    efforts to preserve Black and Indigenous history.
+                                    Wear your pride and help protect our legacy.
+                                </Card.Text>
+                                 {/* Image moved below text, centered, max height */}
+                                <img
+                                    src={apparelImage}
+                                    alt="Apparel preview"
+                                    style={{ maxHeight: '250px', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '1rem' }}
+                                    className="img-fluid mt-3" // Added margin top for spacing
+                                />
                             </Card.Body>
                         </Card>
                     </Col>

@@ -1,7 +1,22 @@
 /* custom.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 /* Base styling */
 :root {
+    --primary-color: #926001;
+    --secondary-color: #946101;
+    --accent-color: #5A4CBB; /* Slightly darker and desaturated lavender for contrast */
+    --background-color: #1A0E07; /* Darkened background color for legacy theme */
+    --text-color: #dddddd; /* Slightly less bright white */
+    --light-color: #dddddd; /* Slightly less bright white */
+    --border-color: var(--light-color);
+    --card-shadow: 0 6px 10px rgba(255, 255, 255, 0.2); /* Adjusted white shadow for dark background */
+    --btn-shadow: 0 2px 4px rgba(255, 255, 255, 0.2); /* Light shadow for dark background */
+    --card-background-color: #2A1E17; /* Slightly lighter background for cards in legacy theme */
+}
+
+.archive-theme {
     --primary-color: #7c3f58; /* burgundy */
     --secondary-color: #a65e72; /* lighter burgundy */
     --accent-color: #d4a373; /* warm sand/gold - replaces blue */
@@ -10,6 +25,8 @@
     --light-color: #ffffff;
     --border-color: #e0d6d2;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle dark shadow */
+    --card-background-color: var(--background-color);
 }
 
 /* High Contrast Theme */
@@ -22,6 +39,8 @@
     --light-color: #ffffff; /* white */
     --border-color: #000000; /* black borders */
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --btn-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* More prominent dark shadow */
+    --card-background-color: var(--background-color);
 }
 
 /* Colorless Theme */
@@ -34,6 +53,12 @@
     --light-color: #ffffff; /* white */
     --border-color: #cccccc; /* light gray borders */
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --btn-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Very subtle dark shadow */
+    --card-background-color: var(--background-color);
+}
+
+html {
+    background-color: var(--background-color);
 }
 
 body {
@@ -48,7 +73,8 @@ body.font-cozy {
 }
 
 body.font-clear {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    font-weight: 300; /* Apply Light 300 weight */
 }
 
 body.font-mono {
@@ -121,25 +147,54 @@ small, .small {
     color: var(--light-color) !important;
 }
 
+/* Custom logo styling */
+.navbar-brand-custom {
+    position: relative; /* Needed for absolute positioning of pseudo-element */
+    color: white !important; /* White text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for visibility */
+    font-family: 'Playfair Display', serif !important; /* Apply fancy font */
+    font-size: 2rem !important; /* Fixed font size, not affected by accessibility */
+    font-weight: 700 !important; /* Bold font weight */
+    display: inline-block; /* Allow positioning context */
+    z-index: 1; /* Ensure text is above the image */
+    padding-left: 40px; /* Add padding for the image */
+}
+
+.navbar-brand-custom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    background-image: url('../images/sankofa.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(1); /* Invert image color to white */
+    z-index: -1; /* Place image behind the text */
+}
+
+
 .navbar-nav .nav-link {
     color: var(--light-color) !important;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.8rem; /* Reduced padding */
     margin: 0 0.25rem;
     transition: all 0.3s ease;
-    border-radius: 5px;
+    border-radius: 20px; /* Increased border-radius for more rounded edges */
 }
 
 .navbar-nav .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
+    /* Removed transform: scale(1.05); */
 }
 
 /* Enhanced active navigation state */
 .navbar-nav .nav-link.active {
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly reduced opacity */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Reduced spread and opacity */
+    /* Removed transform: scale(1.05); */
 }
 
 /* Footer styling */
@@ -148,7 +203,6 @@ footer {
     color: var(--light-color);
     padding: 1.5rem 0;
     text-align: center;
-    margin-top: 2rem;
     position: relative;
     width: 100%;
 }
@@ -156,12 +210,12 @@ footer {
 /* Card styling adjustments - removed hover transform effect */
 .card {
     margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 15px;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 15px !important;
     overflow: hidden;
-    box-shadow: var(--card-shadow);
+    box-shadow: var(--card-shadow) !important; /* Ensure custom shadow is applied */
     transition: box-shadow 0.3s ease;
-    background-color: var(--light-color);
+    background-color: var(--card-background-color) !important;
 }
 
 .card:hover {
@@ -171,8 +225,10 @@ footer {
 .card img {
     object-fit: cover;
     height: 200px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 }
 
 .card-body {
@@ -183,6 +239,16 @@ footer {
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--text-color);
+}
+
+/* Ensure text color within main content and card bodies respects the theme */
+main {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.card-body {
+    color: var(--text-color) !important;
 }
 
 /* Timeline card - special handling */
@@ -213,24 +279,25 @@ footer {
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--light-color);
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--text-color) !important;
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--text-color) !important;
+    border-color: var(--text-color) !important;
+    color: var(--light-color) !important;
 }
 
 .btn-outline-secondary {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
+    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
 }
 
 .btn-outline-secondary:hover {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
+    background-color: var(--accent-color) !important;
+    color: var(--text-color) !important;
 }
 
 .btn-sm {
@@ -242,28 +309,28 @@ footer {
 /* Accessibility controls panel */
 .accessibility-toggle {
     position: fixed;
-    top: 100px;
+    top: 100px; /* Keep top for now, adjust panel position later */
     right: 20px;
     z-index: 1010;
     background-color: var(--primary-color);
     color: var(--light-color);
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+    width: auto; /* Auto width for text */
+    height: auto; /* Auto height for text */
+    border-radius: 8px; /* More rounded rectangle */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 8px 15px; /* Add padding for text */
+    font-size: 1rem; /* Ensure readable text size */
+    font-weight: 600;
 }
 
-.accessibility-toggle i {
-    font-size: 24px;
-}
 
 .accessibility-panel {
     position: fixed;
-    top: 100px;
+    top: 150px; /* Adjust top to be below the button (approximate) */
     right: -360px; /* Wider panel to accommodate larger buttons */
     width: 360px;
     background-color: var(--light-color);
@@ -328,6 +395,18 @@ footer {
     flex: 1;
     position: relative;
     padding: 0.5rem;
+}
+
+.btn-color-scheme-legacy {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-color-scheme-legacy:hover {
+    background-color: var(--background-color) !important; /* Keep same on hover */
+    color: var(--text-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .btn-color-scheme-archive {
@@ -528,7 +607,6 @@ footer {
     margin-bottom: 2rem;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    display: none;
 }
 
 .example-submission.show {
@@ -649,4 +727,61 @@ img {
         font-size: smaller;
         padding: 0.25rem 0.5rem;
     }
+}
+/* Styling for exhibit images */
+.exhibit-image {
+    display: block; /* Ensure it behaves as a block element */
+    max-height: 600px;
+    width: auto; /* Allow width to be determined by aspect ratio and max-height */
+    max-width: 100%; /* Ensure image does not exceed container width */
+    object-fit: contain; /* Maintain aspect ratio while containing within the area */
+    border-radius: 8px; /* Apply rounded corners */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add a white glow effect */
+}
+/* Styling for the exhibit gallery container */
+.exhibit-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the images in the row */
+}
+/* Styling for exhibit gallery links */
+.exhibit-gallery a {
+    display: inline-block; /* Allow links to wrap and size based on content */
+}
+/* Ensure text color within timeline card follows theme */
+.timeline-card h3,
+.timeline-card p {
+    color: var(--text-color) !important;
+}
+/* Custom styling for info alerts */
+.alert-info {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--light-color) !important;
+}
+/* Ensure text color for form elements within card bodies follows theme */
+.card-body p,
+.card-body label,
+.card-body input,
+.card-body textarea,
+.card-body select {
+    color: var(--text-color) !important;
+}
+/* Ensure h3 color within card headers follows theme */
+.card-header h3 {
+    color: var(--text-color) !important;
+}
+/* Ensure icon color within card headers follows theme */
+.card-header i {
+    color: var(--text-color) !important;
+}
+/* Ensure text color in form inputs is dark for readability */
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+    color: #000000 !important;
+}
+/* Ensure text color in select options is dark for readability */
+select option {
+    color: #000000 !important;
 }
