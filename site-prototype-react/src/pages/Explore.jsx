@@ -37,7 +37,7 @@ const Explore = () => { // Removed props
                         <h3>Browse by Tag</h3>
                         <Form action="/searchresults" method="GET" role="search" className="mb-3">
                             <InputGroup>
-                                <Form.Control type="text" name="tag" placeholder="Search for a tag..." />
+                                <Form.Control type="text" name="query" placeholder="Search for a tag..." /> {/* Changed name to query */}
                                 <Button variant="secondary" type="submit">
                                     <i className="fas fa-search me-2"></i>Find Tag
                                 </Button>
@@ -47,13 +47,13 @@ const Explore = () => { // Removed props
                         <div className="popular-tags">
                             <h5>Popular Tags:</h5>
                             <div className="tag-list">
-                                <button className="tag-button">Civil Rights <span className="tag-count">24</span></button>
-                                <button className="tag-button">Photographs <span className="tag-count">18</span></button>
-                                <button className="tag-button">Seattle <span className="tag-count">15</span></button>
-                                <button className="tag-button">1960s <span className="tag-count">12</span></button>
-                                <button className="tag-button">Education <span className="tag-count">9</span></button>
-                                <button className="tag-button">Community <span className="tag-count">7</span></button>
-                                <button className="tag-button">Family <span className="tag-count">6</span></button>
+                                <Link to="/searchresults?query=Civil%20Rights" className="tag-button">Civil Rights <span className="tag-count">24</span></Link>
+                                <Link to="/searchresults?query=Photographs" className="tag-button">Photographs <span className="tag-count">18</span></Link>
+                                <Link to="/searchresults?query=Seattle" className="tag-button">Seattle <span className="tag-count">15</span></Link>
+                                <Link to="/searchresults?query=1960s" className="tag-button">1960s <span className="tag-count">12</span></Link>
+                                <Link to="/searchresults?query=Education" className="tag-button">Education <span className="tag-count">9</span></Link>
+                                <Link to="/searchresults?query=Community" className="tag-button">Community <span className="tag-count">7</span></Link>
+                                <Link to="/searchresults?query=Family" className="tag-button">Family <span className="tag-count">6</span></Link>
                             </div>
                         </div>
                     </Card.Body>
@@ -66,11 +66,11 @@ const Explore = () => { // Removed props
                             <Card.Body>
                                 <h5 className="card-title">Filter by Categories</h5>
                                 <div className="d-flex flex-wrap">
-                                    <button className="tag-button">Photographs</button>
-                                    <button className="tag-button">Documents</button>
-                                    <button className="tag-button">Oral Histories</button>
-                                    <button className="tag-button">Artifacts</button>
-                                    <button className="tag-button">News Articles</button>
+                                    <Link to="/searchresults?query=Photographs" className="tag-button">Photographs</Link>
+                                    <Link to="/searchresults?query=Documents" className="tag-button">Documents</Link>
+                                    <Link to="/searchresults?query=Oral%20Histories" className="tag-button">Oral Histories</Link>
+                                    <Link to="/searchresults?query=Artifacts" className="tag-button">Artifacts</Link>
+                                    <Link to="/searchresults?query=News%20Articles" className="tag-button">News Articles</Link>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -80,11 +80,11 @@ const Explore = () => { // Removed props
                             <Card.Body>
                                 <h5 className="card-title">Filter by Time Period</h5>
                                 <div className="d-flex flex-wrap">
-                                    <button className="tag-button">Pre-1900</button>
-                                    <button className="tag-button">1900-1950</button>
-                                    <button className="tag-button">1950-1970</button>
-                                    <button className="tag-button">1970-2000</button>
-                                    <button className="tag-button">2000-Present</button>
+                                    <Link to="/searchresults?query=Pre-1900" className="tag-button">Pre-1900</Link>
+                                    <Link to="/searchresults?query=1900-1950" className="tag-button">1900-1950</Link>
+                                    <Link to="/searchresults?query=1950-1970" className="tag-button">1950-1970</Link>
+                                    <Link to="/searchresults?query=1970-2000" className="tag-button">1970-2000</Link>
+                                    <Link to="/searchresults?query=2000-Present" className="tag-button">2000-Present</Link>
                                 </div>
                             </Card.Body>
                         </Card>

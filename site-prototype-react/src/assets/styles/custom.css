@@ -524,6 +524,8 @@ main {
 .details-table td {
     padding: 1rem;
     border: 1px solid var(--border-color);
+    background-color: var(--card-background-color) !important; /* Use card background */
+    color: var(--text-color) !important; /* Ensure text color matches theme */
 }
 
 .details-table th {
@@ -534,9 +536,7 @@ main {
     width: 25%;
 }
 
-.details-table tr:nth-child(even) td {
-    background-color: rgba(0,0,0,0.02);
-}
+/* Removed alternating row background */
 
 /* Item details button styling */
 .item-details-button {
@@ -784,4 +784,29 @@ select {
 /* Ensure text color in select options is dark for readability */
 select option {
     color: #000000 !important;
+}
+/* Style breadcrumbs - Targeted !important */
+.breadcrumb {
+  --bs-breadcrumb-divider: '/'; /* Add slash separator */
+}
+
+/* Style the divider */
+.breadcrumb .breadcrumb-item::before {
+    color: var(--text-color) !important; /* Force theme text color for separator */
+}
+
+/* Style the links (Reverted to no !important) */
+.breadcrumb .breadcrumb-item a {
+  color: var(--text-color); /* Use theme text color for links */
+  text-decoration: none;
+}
+
+.breadcrumb .breadcrumb-item a:hover {
+  color: var(--bs-primary); /* Use primary theme color on hover */
+  text-decoration: underline;
+}
+
+/* Style the active (non-link) breadcrumb item */
+.breadcrumb .breadcrumb-item.active {
+  color: var(--text-color) !important; /* Force theme text color */
 }

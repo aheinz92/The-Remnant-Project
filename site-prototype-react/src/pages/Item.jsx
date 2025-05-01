@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Breadcrumb, Collapse, Button, Form, Table } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Breadcrumb, Collapse, Button, Form, Table, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Import images
 import collectionItem3Img from '../assets/images/collectionitem3.png';
-import item2Img from '../assets/images/item2.png';
+import item6Img from '../assets/images/item6.png'; // Use item6 for flyer
 import item7Img from '../assets/images/item7.png';
 
 const Item = () => { // Removed props
-    const [detailsOpen, setDetailsOpen] = useState(false);
+    // Initialize state from localStorage, defaulting to false (collapsed)
+    const [detailsOpen, setDetailsOpen] = useState(() => {
+        const storedState = localStorage.getItem('itemDetailsExpanded_placeholder');
+        return storedState ? JSON.parse(storedState) : false;
+    });
     const [tagFormVisible, setTagFormVisible] = useState(false);
     const [connectionFormVisible, setConnectionFormVisible] = useState(false);
 
@@ -24,6 +28,11 @@ const Item = () => { // Removed props
         setConnectionFormVisible(!connectionFormVisible);
     };
 
+    // Update localStorage whenever detailsOpen changes
+    useEffect(() => {
+        localStorage.setItem('itemDetailsExpanded_placeholder', JSON.stringify(detailsOpen));
+    }, [detailsOpen]);
+
     return (
         <> {/* Use Fragment instead of div */}
             {/* Removed AccessibilityPanel and Navbar */}
@@ -35,12 +44,12 @@ const Item = () => { // Removed props
                 </Breadcrumb>
 
                 <h1>Black Panthers on steps of Legislative Building, Olympia</h1>
-                <div className="text-center mb-4">
+                <div className="text-center my-4">
                     <img
                         src={collectionItem3Img}
                         alt="Black Panthers standing on the steps of the Legislative Building in Olympia"
                         className="img-fluid rounded"
-                        style={{ maxHeight: '700px' }}
+                        style={{ height: '600px' }}
                     />
                 </div>
 
@@ -53,7 +62,7 @@ const Item = () => { // Removed props
                         aria-expanded={detailsOpen}
                         aria-controls="detailsCollapse"
                     >
-                        Item Details
+                        Had a good look? Click to learn more...
                     </button>
                 </div>
 
@@ -84,18 +93,18 @@ const Item = () => { // Removed props
                             <tr>
                                 <th>Categories</th>
                                 <td>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Black Panthers</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Legislation</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Civil Rights</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Black Panthers")}`} className="btn btn-secondary btn-sm me-1 mb-1">Black Panthers</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Legislation")}`} className="btn btn-secondary btn-sm me-1 mb-1">Legislation</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Civil Rights")}`} className="btn btn-secondary btn-sm me-1 mb-1">Civil Rights</Link>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Tags</th>
                                 <td>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Protest</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Black & White Photo</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Olympia Capitol</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Guns</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Protest")}`} className="btn btn-secondary btn-sm me-1 mb-1">Protest</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Black & White Photo")}`} className="btn btn-secondary btn-sm me-1 mb-1">Black & White Photo</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Olympia Capitol")}`} className="btn btn-secondary btn-sm me-1 mb-1">Olympia Capitol</Link>
+                                    <Link to={`/searchresults?query=${encodeURIComponent("Guns")}`} className="btn btn-secondary btn-sm me-1 mb-1">Guns</Link>
                                     <button
                                         type="button"
                                         className="tag-button me-1 mb-1"
@@ -125,41 +134,38 @@ const Item = () => { // Removed props
                             <tr>
                                 <th>Connections</th>
                                 <td>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Item 1</Link>
-                                    <Link to="/searchresults" className="btn btn-secondary btn-sm me-1 mb-1">Item 2</Link>
-                                    <button
-                                        type="button"
-                                        className="tag-button me-1 mb-1"
-                                        onClick={toggleConnectionForm}
-                                    >
-                                        + Suggest Connection
-                                    </button>
+                                    {/* Connections with Images */}
+                                    <div className="d-flex align-items-center mb-2">
+                                        <img src={item6Img} alt="Flyer for civil rights rally, 1969" style={{ width: '50px', height: 'auto', marginRight: '10px', borderRadius: '4px' }} />
+                                        <Link to="/item" className="btn btn-secondary btn-sm">Flyer for civil rights rally, 1969</Link>
+                                    </div>
+                                    <div className="d-flex align-items-center mb-2">
+                                        <img src={item7Img} alt="Legislative notes on firearm laws, 1970" style={{ width: '50px', height: 'auto', marginRight: '10px', borderRadius: '4px' }} />
+                                        <Link to="/item" className="btn btn-secondary btn-sm">Legislative notes on firearm laws, 1970</Link>
+                                    </div>
 
-                                    {connectionFormVisible && (
-                                        <div className="mt-2">
-                                            <InputGroup className="mb-2">
-                                                <Form.Control placeholder="Search for items to connect" />
-                                                <Button variant="secondary">Submit</Button>
-                                            </InputGroup>
-                                        </div>
-                                    )}
+                                    {/* Suggest Connection Button */}
+                                    <div className="mt-2">
+                                        <button
+                                            type="button"
+                                            className="tag-button me-1 mb-1"
+                                            onClick={toggleConnectionForm}
+                                        >
+                                            + Suggest Connection
+                                        </button>
+
+                                        {connectionFormVisible && (
+                                            <div className="mt-2">
+                                                <InputGroup className="mb-2">
+                                                    <Form.Control placeholder="Search for items to connect" />
+                                                    <Button variant="secondary">Submit</Button>
+                                                </InputGroup>
+                                            </div>
+                                        )}
+                                    </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Related Items</th>
-                                <td>
-                                    <Row>
-                                        <Col xs={6}>
-                                            <img src={item2Img} alt="Related item" className="img-fluid rounded mb-2" />
-                                            <p className="small"><Link to="#">Flyer for civil rights rally, 1969</Link></p>
-                                        </Col>
-                                        <Col xs={6}>
-                                            <img src={item7Img} alt="Related item" className="img-fluid rounded mb-2" />
-                                            <p className="small"><Link to="#">Legislative notes on firearm laws, 1970</Link></p>
-                                        </Col>
-                                    </Row>
-                                </td>
-                            </tr>
+                            {/* Removed Related Items row - Merged into Connections */}
                             <tr>
                                 <th>Comments</th>
                                 <td>

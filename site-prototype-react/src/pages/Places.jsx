@@ -19,38 +19,41 @@ const Places = () => { // Removed props
                 <Row>
                     {/* Place Card 1 */}
                     <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={splashImg} alt="Kitsap County landscape" />
-                            <Card.Body>
-                                <Card.Title>Kitsap County</Card.Title>
-                                <p>A region with a rich history of diverse communities and development.</p>
-                                {/* Removed Timeline Link */}
-                            </Card.Body>
-                        </Card>
+                        <Link to="/searchresults?query=Kitsap%20County" className="text-decoration-none text-dark">
+                            <Card>
+                                <Card.Img variant="top" src={splashImg} alt="Kitsap County landscape" />
+                                <Card.Body>
+                                    <Card.Title>Kitsap County</Card.Title>
+                                    <p>A region with a rich history of diverse communities and development.</p>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                     {/* Place Card 2 */}
                     <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={bainbridgeImg} alt="Bainbridge Island landscape" />
-                            <Card.Body>
-                                <Card.Title>Bainbridge Island</Card.Title>
-                                <p>A community shaped by multiple cultural influences over generations.</p>
-                                {/* Removed Timeline Link */}
-                            </Card.Body>
-                        </Card>
+                        <Link to="/searchresults?query=Bainbridge%20Island" className="text-decoration-none text-dark">
+                            <Card>
+                                <Card.Img variant="top" src={bainbridgeImg} alt="Bainbridge Island landscape" />
+                                <Card.Body>
+                                    <Card.Title>Bainbridge Island</Card.Title>
+                                    <p>A community shaped by multiple cultural influences over generations.</p>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
 
                     {/* Place Card 3 */}
                     <Col md={4}>
-                        <Card>
-                            <Card.Img variant="top" src={seattleImg} alt="Historic Seattle skyline" />
-                            <Card.Body>
-                                <Card.Title>Historic Seattle</Card.Title>
-                                <p>Explore the transformation of Seattle through key historical moments.</p>
-                                {/* Removed Timeline Link */}
-                            </Card.Body>
-                        </Card>
+                        <Link to="/searchresults?query=Historic%20Seattle" className="text-decoration-none text-dark">
+                            <Card>
+                                <Card.Img variant="top" src={seattleImg} alt="Historic Seattle skyline" />
+                                <Card.Body>
+                                    <Card.Title>Historic Seattle</Card.Title>
+                                    <p>Explore the transformation of Seattle through key historical moments.</p>
+                                </Card.Body>
+                            </Card>
+                        </Link>
                     </Col>
                 </Row>
 {/* --- Timeline Section --- */}

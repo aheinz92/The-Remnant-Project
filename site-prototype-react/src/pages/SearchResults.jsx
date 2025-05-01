@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Form, InputGroup, Button, Card, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 
 // Import images
 import item1Img from '../assets/images/item1.png';
@@ -13,7 +13,11 @@ import item7Img from '../assets/images/item7.png';
 import item8Img from '../assets/images/item8.png';
 import collectionItem3Img from '../assets/images/collectionitem3.png';
 
-const SearchResults = () => { // Removed props
+const SearchResults = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const query = queryParams.get('query') || ''; // Get query or default to empty string
+
     return (
         <> {/* Use Fragment instead of div */}
             {/* Removed AccessibilityPanel and Navbar */}
@@ -29,7 +33,7 @@ const SearchResults = () => { // Removed props
                             type="text"
                             name="query"
                             placeholder="Search items..."
-                            defaultValue="Civil Rights"
+                            defaultValue={query} // Use the query from URL
                         />
                         <Button variant="secondary" type="submit">
                             <i className="fas fa-search me-2"></i>Search
@@ -38,7 +42,7 @@ const SearchResults = () => { // Removed props
                 </Form>
 
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                    <p className="mb-0">Showing 25 results for "<strong>Civil Rights</strong>"</p>
+                    <p className="mb-0">Showing 25 results for "<strong>{query}</strong>"</p> {/* Use the query from URL */}
                     <Dropdown>
                         <Dropdown.Toggle variant="outline-secondary" id="sortDropdown">
                             Sort: Relevance
