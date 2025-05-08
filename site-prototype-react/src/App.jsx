@@ -12,10 +12,22 @@ import Item from './pages/Item';
 import People from './pages/People';
 import Places from './pages/Places';
 import SearchResults from './pages/SearchResults';
-// import Timelines from './pages/Timelines'; // Removed Timelines import
+import Timelines from './pages/Timelines'; // Removed Timelines import
 import ArtifactsApparel from './pages/ArtifactsApparel';
 import Exhibits from './pages/Exhibits'; // Import the Exhibits page
 import NotionEmbedPage from './pages/NotionEmbedPage'; // Import the new page
+import Campaign from './pages/Campaign'; // Import the Campaign page
+import LessonPlans from './pages/LessonPlans'; // Import the LessonPlans page
+import BlackPressExhibit from './pages/BlackPressExhibit'; // Import the Black Press Exhibit page
+import BlackAnchorsExhibit from './pages/BlackAnchorsExhibit';
+import MissingRemnantsExhibit from './pages/MissingRemnantsExhibit';
+import RedPedagogyExhibit from './pages/RedPedagogyExhibit';
+import WeThePeopleExhibit from './pages/WeThePeopleExhibit';
+import TheBlackChurchExhibit from './pages/TheBlackChurchExhibit';
+import TheWomenExhibit from './pages/TheWomenExhibit';
+import VirtualStoreExhibit from './pages/VirtualStoreExhibit';
+import TheAfricanMaskExhibit from './pages/TheAfricanMaskExhibit';
+import TheNegativesExhibit from './pages/TheNegativesExhibit';
 import Layout from './components/Layout'; // Import the Layout component
 
 function App() {
@@ -36,11 +48,9 @@ function App() {
     // Color Scheme Control
     const changeColorScheme = (scheme) => {
         // Remove all existing theme classes
-        document.body.classList.remove('archive-theme', 'contrast-theme', 'colorless-theme');
-        // Add the new theme class if it's not the default (legacy)
-        if (scheme !== 'legacy') {
-            document.body.classList.add(`${scheme}-theme`);
-        }
+        document.body.classList.remove('legacy-theme', 'afrofuturism-theme', 'archive-theme', 'contrast-theme', 'colorless-theme');
+        // Add the new theme class
+        document.body.classList.add(`${scheme}-theme`);
         localStorage.setItem('preferredColorScheme', scheme);
     };
 
@@ -48,7 +58,7 @@ function App() {
     useEffect(() => {
         const savedFontSize = localStorage.getItem('preferredFontSize') || 'medium';
         const savedFontStyle = localStorage.getItem('preferredFontStyle') || 'clear';
-        const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'archive';
+        const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'legacy';
 
         changeFontSize(savedFontSize);
         changeFont(savedFontStyle);
@@ -70,10 +80,22 @@ function App() {
                 <Route path="people" element={<People />} />
                 <Route path="places" element={<Places />} />
                 <Route path="searchresults" element={<SearchResults />} />
-                {/* <Route path="timelines" element={<Timelines />} /> */} {/* Removed Timelines route */}
+                <Route path="timelines" element={<Timelines />} />
                 <Route path="artifacts-apparel" element={<ArtifactsApparel />} />
                 <Route path="exhibits" element={<Exhibits />} />
                 <Route path="notion-embed" element={<NotionEmbedPage />} />
+                <Route path="campaign" element={<Campaign />} />
+                <Route path="lesson-plans" element={<LessonPlans />} />
+                <Route path="exhibit/black-press" element={<BlackPressExhibit />} />
+                <Route path="exhibit/black-anchors" element={<BlackAnchorsExhibit />} />
+                <Route path="exhibit/missing-remnants" element={<MissingRemnantsExhibit />} />
+                <Route path="exhibit/red-pedagogy" element={<RedPedagogyExhibit />} />
+                <Route path="exhibit/we-the-people" element={<WeThePeopleExhibit />} />
+                <Route path="exhibit/the-black-church" element={<TheBlackChurchExhibit />} />
+                <Route path="exhibit/the-women" element={<TheWomenExhibit />} />
+                <Route path="exhibit/virtual-store" element={<VirtualStoreExhibit />} />
+                <Route path="exhibit/the-african-mask" element={<TheAfricanMaskExhibit />} />
+                <Route path="exhibit/the-negatives" element={<TheNegativesExhibit />} />
                 {/* Redirect unmatched child routes relative to the layout */}
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Route>

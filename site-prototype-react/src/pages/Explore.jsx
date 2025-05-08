@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Form, InputGroup, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, InputGroup, Button, Card, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Import images
@@ -13,6 +13,9 @@ const Explore = () => { // Removed props
             {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Search & Explore the Archive</h1>
+                <Alert variant="info" className="mt-3 mb-4 alert-subtle-info">
+                    This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
+                </Alert>
                 <p className="lead">Discover historical items, stories, and collections from Washington State's diverse communities.</p>
 
                 {/* Search Bar */}

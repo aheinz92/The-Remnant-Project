@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) => {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const panelRef = useRef(null);
+    const toggleRef = useRef(null);
 
     const toggleAccessibilityPanel = () => {
-        setIsPanelOpen(!isPanelOpen);
+        setIsPanelOpen(prev => !prev);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // If panel is open and click is outside panel and outside toggle button
+            if (
+                panelRef.current &&
+                !panelRef.current.contains(event.target) &&
+                toggleRef.current &&
+                !toggleRef.current.contains(event.target)
+            ) {
+                setIsPanelOpen(false);
+            }
+        };
+
+        if (isPanelOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isPanelOpen]);
 
     return (
         <>
-            <div className="accessibility-toggle" onClick={toggleAccessibilityPanel}>
+            <div className="accessibility-toggle" onClick={toggleAccessibilityPanel} ref={toggleRef}>
                 Change Site Appearance
             </div>
 
-            <div className={`accessibility-panel ${isPanelOpen ? 'open' : ''}`} id="accessibilityPanel">
+            <div className={`accessibility-panel ${isPanelOpen ? 'open' : ''}`} id="accessibilityPanel" ref={panelRef}>
                 <div className="accessibility-section">
                     <label>Text Size:</label>
                     <div className="buttons-row">
@@ -91,6 +117,13 @@ const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) =
                             data-scheme="legacy"
                         >
                             Legacy
+                        </button>
+<button
+                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-afrofuturism"
+                            onClick={() => changeColorScheme('afrofuturism')}
+                            data-scheme="afrofuturism"
+                        >
+                            Afrofuturism
                         </button>
                         <button
                             className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive"

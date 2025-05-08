@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Breadcrumb, Collapse, Button, Form, Table, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Breadcrumb, Collapse, Button, Form, Table, InputGroup, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Import images
@@ -44,6 +44,9 @@ const Item = () => { // Removed props
                 </Breadcrumb>
 
                 <h1>Black Panthers on steps of Legislative Building, Olympia</h1>
+                <Alert variant="info" className="mt-3 mb-4 alert-subtle-info">
+                    This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
+                </Alert>
                 <div className="text-center my-4">
                     <img
                         src={collectionItem3Img}

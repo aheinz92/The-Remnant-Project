@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Form, InputGroup, Button, Card, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Form, InputGroup, Button, Card, Dropdown, Alert } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 
 // Import images
@@ -23,6 +23,9 @@ const SearchResults = () => {
             {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Search Results</h1>
+                <Alert variant="info" className="mt-3 mb-4 alert-subtle-info">
+                    This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
+                </Alert>
 
                 {/* Search Bar */}
                 <Form className="mb-4" role="search">

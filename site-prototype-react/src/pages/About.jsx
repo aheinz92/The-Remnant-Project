@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Accordion } from 'react-bootstrap';
 
 // Import partner logos
 import blackmuseLogo from '../assets/images/blackmuse.svg';
@@ -37,153 +37,110 @@ const About = () => { // Removed props
                 </p>
 
                 {/* Explore and Join Sections */}
-                <Row className="mb-4"> {/* Adjusted spacing */}
-                    <Col md={6} className="mb-4 mb-md-0">
-                        <Card className="h-100 shadow-sm">
-                            <Card.Body className="d-flex flex-column"> {/* Ensure body takes height */}
-                                <Card.Title as="h2">Explore the Archive</Card.Title>
-                                <Card.Text>
-                                    Explore our comprehensive digital archives for in-depth research on key aspects of Black history. These resources provide valuable insights into the lives and contributions of Black communities, leaders, and organizations throughout history. Our focus areas include:
-                                </Card.Text>
-                                <ul>
-                                    <li>Black Churches</li>
-                                    <li>Black Masonic Organizations</li>
-                                    <li>Black Families</li>
-                                    <li>Early Black Pioneers</li>
-                                    <li>Early Black Educators</li>
-                                    <li>Community Groups</li>
-                                    <li>Black Women Leaders</li>
-                                    <li>Life and Times</li>
-                                </ul>
-                                <Card.Text> {/* Push to bottom if needed */}
-                                    We are creating a digital archive, accessible online and potentially in virtual reality, where these stories can be experienced, shared, and celebrated by everyone.
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={6}>
-                        <Card className="h-100 shadow-sm">
-                            <Card.Body className="d-flex flex-column"> {/* Ensure body takes height */}
-                                <Card.Title as="h2">Join the Movement</Card.Title>
-                                <Card.Text>
-                                    Healing isn’t just about sitting with our pain—it’s about moving through it, transforming it into something powerful, something that feeds the future. That’s why we invite you to roll up your sleeves and join us in this sacred work. Whether it’s moderating healing sessions, archiving endangered African American and Indigenous archives, or documenting our elders’ testimonies, there’s a place for you here.
-                                </Card.Text>
-                                <Card.Text>
-                                    Come on in. Join the Healing Circle, and then step into the work of archiving, preserving, and uplifting our history. We need each other, and we need you.
-                                </Card.Text>
-                                <Card.Text as="strong">Ways to get involved:</Card.Text>
-                                <ul>
-                                    <li>Join Our Healing Circles</li>
-                                    <li>Archive Our History</li>
-                                    <li>Document Elder Testimonies</li>
-                                    <li>Research & Map History</li>
-                                    <li>Create Merch</li>
-                                    <li>Digital Innovation & Virtual Preservation Team</li>
-                                    <li>Create Curriculum</li>
-                                    <li>Share the Good Word</li>
-                                </ul>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
+                <Accordion defaultActiveKey={null} className="mb-4"> {/* Ensure all start collapsed */}
+                    <Row>
+                        <Col md={6} className="mb-4 mb-md-0">
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header as="h2">Explore the Archive</Accordion.Header>
+                                <Accordion.Body>
+                                    <Card.Text>
+                                        Explore our comprehensive digital archives for in-depth research on key aspects of Black history. These resources provide valuable insights into the lives and contributions of Black communities, leaders, and organizations throughout history. Our focus areas include:
+                                    </Card.Text>
+                                    <ul>
+                                        <li>Black Churches</li>
+                                        <li>Black Masonic Organizations</li>
+                                        <li>Black Families</li>
+                                        <li>Early Black Pioneers</li>
+                                        <li>Early Black Educators</li>
+                                        <li>Community Groups</li>
+                                        <li>Black Women Leaders</li>
+                                        <li>Life and Times</li>
+                                    </ul>
+                                    <Card.Text>
+                                        We are creating a digital archive, accessible online and potentially in virtual reality, where these stories can be experienced, shared, and celebrated by everyone.
+                                    </Card.Text>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Col>
+                        <Col md={6}>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header as="h2">Join the Movement</Accordion.Header>
+                                <Accordion.Body>
+                                    <Card.Text>
+                                        Healing isn’t just about sitting with our pain—it’s about moving through it, transforming it into something powerful, something that feeds the future. That’s why we invite you to roll up your sleeves and join us in this sacred work. Whether it’s moderating healing sessions, archiving endangered African American and Indigenous archives, or documenting our elders’ testimonies, there’s a place for you here.
+                                    </Card.Text>
+                                    <Card.Text>
+                                        Come on in. Join the Healing Circle, and then step into the work of archiving, preserving, and uplifting our history. We need each other, and we need you.
+                                    </Card.Text>
+                                    <Card.Text as="strong">Ways to get involved:</Card.Text>
+                                    <ul>
+                                        <li>Join Our Healing Circles</li>
+                                        <li>Archive Our History</li>
+                                        <li>Document Elder Testimonies</li>
+                                        <li>Research & Map History</li>
+                                        <li>Create Merch</li>
+                                        <li>Digital Innovation & Virtual Preservation Team</li>
+                                        <li>Create Curriculum</li>
+                                        <li>Share the Good Word</li>
+                                    </ul>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Col>
+                    </Row>
+                    {/* Our Story & Achievements Section */}
+                    <Row className="mt-4"> {/* Add margin for spacing */}
+                        <Col>
+                            <Accordion.Item eventKey="2">
+                                <Accordion.Header as="h2">Our Story & Achievements</Accordion.Header>
+                                <Accordion.Body>
+                                    <Card.Text>
+                                        The Remnant Project has played a significant role in preserving history and advocating for recognition:
+                                    </Card.Text>
+                                    {/* TODO: Implement a horizontal timeline component here */}
+                                    <ul>
+                                        <li><strong>2004:</strong> Played a pivotal role in renaming the Bremerton Post Office to honor John Henry Turpin and establishing the Justice Spearman Justice Center on Bainbridge Island.</li>
+                                        <li><strong>2019:</strong> Preserved over 16,000 historical documents, photographs, and newspapers, while also interviewing elders in the community to capture their invaluable stories and insights.</li>
+                                        <li><strong>2022:</strong> Officially renamed “Nigga Lakes” to honor Black pioneers Nathaniel J. Sargent and Rodney White.</li>
+                                        <li><strong>2023:</strong> Helped identify over 70,000 restricted properties in neighborhoods across Washington, shedding light on the history of exclusion and segregation.</li>
+                                        <li><strong>2024:</strong> Renamed the Kitsap Regional Library branch to Bremerton - Dr. Martin Luther King Jr.</li>
+                                        <li><strong>Present:</strong> With Washington’s 250th anniversary approaching, immediate funding and support are essential to ensure Black, Indigenous, and underrepresented histories are fully integrated into state initiatives and preserved for future generations.</li>
+                                    </ul>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Col>
+                    </Row>
 
-                {/* Our Story & Achievements Section */}
-                <Row> {/* Adjusted spacing */}
-                    <Col>
-                        <Card className="shadow-sm">
-                            <Card.Body>
-                                <Card.Title as="h2">Our Story & Achievements</Card.Title>
-                                <Card.Text>
-                                    The Remnant Project has played a significant role in preserving history and advocating for recognition:
-                                </Card.Text>
-                                {/* TODO: Implement a horizontal timeline component here */}
-                                <ul>
-                                    <li><strong>2004:</strong> Played a pivotal role in renaming the Bremerton Post Office to honor John Henry Turpin and establishing the Justice Spearman Justice Center on Bainbridge Island.</li>
-                                    <li><strong>2019:</strong> Preserved over 16,000 historical documents, photographs, and newspapers, while also interviewing elders in the community to capture their invaluable stories and insights.</li>
-                                    <li><strong>2022:</strong> Officially renamed “Nigga Lakes” to honor Black pioneers Nathaniel J. Sargent and Rodney White.</li>
-                                    <li><strong>2023:</strong> Helped identify over 70,000 restricted properties in neighborhoods across Washington, shedding light on the history of exclusion and segregation.</li>
-                                    <li><strong>2024:</strong> Renamed the Kitsap Regional Library branch to Bremerton - Dr. Martin Luther King Jr.</li>
-                                    <li><strong>Present:</strong> With Washington’s 250th anniversary approaching, immediate funding and support are essential to ensure Black, Indigenous, and underrepresented histories are fully integrated into state initiatives and preserved for future generations.</li>
-                                </ul>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-{/* Artifacts and Apparel Sections */}
-                <Row className="mb-4">
-                    <Col md={6} className="mb-4 mb-md-0 d-flex"> {/* Use d-flex for equal height */}
-                        <Card className="h-100 shadow-sm flex-fill"> {/* Use flex-fill */}
-                            <Card.Body className="d-flex flex-column">
-                                <Card.Title as="h2">Artifacts</Card.Title>
-                                <Card.Text>
-                                    Purchase digital assets to help preserve and share
-                                    Black and Indigenous history. Each asset funds the
-                                    protection and digitization of invaluable artifacts,
-                                    ensuring our stories live on for generations.
-                                </Card.Text>
-                                {/* Image moved below text, centered, max height */}
-                                <img
-                                    src={artifactsImage}
-                                    alt="Artifacts preview"
-                                    style={{ maxHeight: '250px', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '1rem' }}
-                                    className="img-fluid mt-3" // Added margin top for spacing
-                                />
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col md={6} className="d-flex"> {/* Use d-flex for equal height */}
-                        <Card className="h-100 shadow-sm flex-fill"> {/* Use flex-fill */}
-                            <Card.Body className="d-flex flex-column">
-                                <Card.Title as="h2">Apparel</Card.Title>
-                                <Card.Text>
-                                    Support the movement by purchasing exclusive
-                                    apparel. Each piece tells a story and funds our
-                                    efforts to preserve Black and Indigenous history.
-                                    Wear your pride and help protect our legacy.
-                                </Card.Text>
-                                 {/* Image moved below text, centered, max height */}
-                                <img
-                                    src={apparelImage}
-                                    alt="Apparel preview"
-                                    style={{ maxHeight: '250px', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '1rem' }}
-                                    className="img-fluid mt-3" // Added margin top for spacing
-                                />
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-
-                {/* Partner Organizations Section */}
-                <Row className="mb-4"> {/* Adjusted spacing */}
-                    <Col>
-                        <Card className="shadow-sm">
-                            <Card.Body>
-                                <Card.Title as="h2">Partner Organizations</Card.Title>
-                                <Card.Text>
-                                    We are proud to collaborate with organizations dedicated to preserving and sharing Black and Indigenous history:
-                                </Card.Text>
-                                <Row className="justify-content-center"> {/* Center the cards */}
-                                    {partnerOrgs.map((org, index) => (
-                                        <Col key={index} sm={6} md={4} lg={3} className="d-flex"> {/* Use d-flex for equal height cards in row */}
-                                            <Card className="text-center flex-fill"> {/* Use flex-fill to make cards fill column height */}
-                                                <Card.Body className="d-flex flex-column">
-                                                    <Card.Title as="h5" className="mb-3">{org.name}</Card.Title>
-                                                    {/* Image added below the body content */}
-                                                </Card.Body>
-                                                 <Card.Img
-                                                    variant="bottom"
-                                                    src={org.logo}
-                                                    alt={`${org.name} logo`}
-                                                    style={{ maxHeight: '200px', width: 'auto', objectFit: 'contain', padding: '10px', marginTop: 'auto' }} // Style the image
-                                                />
-                                            </Card>
-                                        </Col>
-                                    ))}
-                                </Row>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
+                    {/* Partner Organizations Section */}
+                    <Row className="mt-4 mb-4"> {/* Add margin for spacing */}
+                        <Col>
+                            <Accordion.Item eventKey="3"> {/* Updated eventKey */}
+                                <Accordion.Header as="h2">Partner Organizations</Accordion.Header>
+                                <Accordion.Body>
+                                    <Card.Text>
+                                        We are proud to collaborate with organizations dedicated to preserving and sharing Black and Indigenous history:
+                                    </Card.Text>
+                                    <Row className="justify-content-center"> {/* Center the cards */}
+                                        {partnerOrgs.map((org, index) => (
+                                            <Col key={index} sm={6} md={4} lg={3} className="d-flex mb-3"> {/* Use d-flex and add bottom margin to inner cards */}
+                                                <Card className="text-center flex-fill shadow-sm"> {/* Add shadow to inner cards */}
+                                                    <Card.Body className="d-flex flex-column">
+                                                        <Card.Title as="h5" className="mb-3">{org.name}</Card.Title>
+                                                    </Card.Body>
+                                                     <Card.Img
+                                                        variant="bottom"
+                                                        src={org.logo}
+                                                        alt={`${org.name} logo`}
+                                                        style={{ maxHeight: '150px', width: 'auto', objectFit: 'contain', padding: '10px', marginTop: 'auto' }} // Adjusted maxHeight
+                                                    />
+                                                </Card>
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Col>
+                    </Row>
+                </Accordion>
 
             </main>
 

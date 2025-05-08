@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Import images
@@ -15,6 +15,9 @@ const Collection = () => { // Removed props
             {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
                 <h1>Historical Photographs: Untold Stories</h1>
+                <Alert variant="info" className="mt-3 mb-4 alert-subtle-info">
+                    This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
+                </Alert>
                 <p className="lead">A collection of photography documenting community life, important events, and everyday moments across Washington State.</p>
 
                 <Row>
