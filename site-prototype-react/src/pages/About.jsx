@@ -130,7 +130,7 @@ const About = () => { // Removed props
                                                         variant="bottom"
                                                         src={org.logo}
                                                         alt={`${org.name} logo`}
-                                                        style={{ maxHeight: '150px', width: 'auto', objectFit: 'contain', padding: '10px', marginTop: 'auto' }} // Adjusted maxHeight
+                                                        className="card-content-img partner-logo"
                                                     />
                                                 </Card>
                                             </Col>

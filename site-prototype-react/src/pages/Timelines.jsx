@@ -213,14 +213,15 @@ timelinesData.forEach(timeline => {
             { year: "1934", items: ["Indian Reorganization Act grants tribes limited self-governance."] },
             { year: "1935", items: ["Filipino-led cannery and farmworker unions challenge racial exploitation in agriculture."] },
             { year: "1935–1937", items: ["With the passage of the Wagner Act, white-majority unions gained legal power to organize. The rise of white-led unions under the Congress of Industrial Organizations (CIO) brought thousands into union ranks, while workers of color were largely left out or marginalized."] },
-            { year: "1941–1945", items: ["World War II: Black, Indigenous, Filipinos and Samoans, and Asian American soldiers build military bases, shipyards, roads, and housing that still shape WA today. Many were drafted into labor under racist restrictions. Japanese Americans are incarcerated. Bremerton and Seattle swell with war migrants and segregated labor camps."] },
-            { year: "Richland", items: ["Created to house Hanford workers for the Manhattan Project."] },
-            { year: "Sinclair Park", items: [] },
-            { year: "(Bremerton)", items: ["Segregated housing for Black shipyard workers."] },
-            { year: "Salishan (Tacoma)", items: ["Integrated war worker housing."] },
-            { year: "Duwamish Bend (Seattle)", items: ["Temporary housing for aircraft/shipyard workers."] },
-            { year: "Camp Hathaway (Vancouver) & Camp George Jordan (Seattle)", items: ["Black military labor camps."] },
-            { year: "DuPont Village & Fort Worden", items: ["Expanded military facilities."] },
+            { year: "1941–1945", items: [
+                "World War II: Black, Indigenous, Filipinos and Samoans, and Asian American soldiers build military bases, shipyards, roads, and housing that still shape WA today. Many were drafted into labor under racist restrictions. Japanese Americans are incarcerated. Bremerton and Seattle swell with war migrants and segregated labor camps.",
+                "Richland: Created to house Hanford workers for the Manhattan Project.",
+                "Sinclair Park (Bremerton): Segregated housing for Black shipyard workers.",
+                "Salishan (Tacoma): Integrated war worker housing.",
+                "Duwamish Bend (Seattle): Temporary housing for aircraft/shipyard workers.",
+                "Camp Hathaway (Vancouver) & Camp George Jordan (Seattle): Black military labor camps.",
+                "DuPont Village & Fort Worden: Expanded military facilities."
+            ] },
             { year: "1942", items: ["The migration of Black laborers into the city for war-related jobs exacerbates tensions between Black workers and the white working class. The competition for jobs, housing, and resources temporarily elevates Black labor but sparks racial inequality, violence, and segregation. The lack of recognition for their sacrifices, coupled with persistent racial inequality, sparks disillusionment and helps lay the groundwork for the Civil Rights Movement."] },
             { year: "1942–1945", items: ["During WWII, white women entered wartime industries in large numbers and, through white-dominated unions, secured equal pay in many sectors. However, many women of color were restricted to lower-paid, non-unionized jobs or denied entry altogether."] },
             { year: "1942–1964", items: ["Bracero Program: During WWII and beyond, thousands of Mexican workers are brought to Washington under the Bracero Program to work in farms, railroads, and orchards. Though essential to food production, they face wage theft, discrimination, and unsafe housing conditions."] },
@@ -379,7 +380,7 @@ const ScrollableTimelineView = ({ data }) => {
                             <Card
                                 onClick={() => handleTimelineSelect(timeline.id)}
                                 style={{ cursor: 'pointer' }}
-                                className={selectedTimelineId === timeline.id ? 'shadow-sm selected-timeline-card' : 'shadow-sm'}
+                                className={`timeline-selection-card ${selectedTimelineId === timeline.id ? 'shadow-sm selected-timeline-card' : 'shadow-sm'}`}
                             >
                                 <Card.Img variant="top" src={timeline.imgSrc} alt={timeline.altText} />
                                 <Card.Body>
@@ -409,7 +410,9 @@ const ScrollableTimelineView = ({ data }) => {
                                     </>
                                 ) : (
                                     <div style={{ padding: '1rem', textAlign: 'center', height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                        <Card.Title as="h3">Timeline Details</Card.Title>
+                                        <Card.Title as="h3">Timeline</Card.Title>
+                                        <br></br>
+                                        <br></br>
                                         <p>Please select one of the three topics above to view its timeline.</p>
                                     </div>
                                 )}

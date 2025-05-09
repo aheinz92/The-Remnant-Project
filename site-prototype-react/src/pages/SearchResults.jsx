@@ -22,10 +22,10 @@ const SearchResults = () => {
         <> {/* Use Fragment instead of div */}
             {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
-                <h1>Search Results</h1>
-                <Alert variant="info" className="mt-3 mb-4 alert-subtle-info">
+                <Alert variant="info" className="mt-3 mb-5 alert-subtle-info">
                     This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
                 </Alert>
+                <h1>Search Results</h1>
 
                 {/* Search Bar */}
                 <Form className="mb-4" role="search">

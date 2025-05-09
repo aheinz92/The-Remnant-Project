@@ -5,6 +5,44 @@ const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) =
     const panelRef = useRef(null);
     const toggleRef = useRef(null);
 
+    const [currentThemeName, setCurrentThemeName] = useState('gilded'); // Default theme
+    const [themeLabelKey, setThemeLabelKey] = useState(Date.now()); // For animation
+
+    const themesData = {
+        gilded: {
+            name: 'Gilded',
+            colors: { primary: '#fcc646', accent: '#d8c2ef', background: '#fffcf2', text: '#4A3B2A' },
+        },
+        legacy: {
+            name: 'Legacy',
+            colors: { primary: '#926001', accent: '#5A4CBB', background: '#1A0E07', text: '#dddddd' },
+        },
+        afrofuturism: {
+            name: 'Afrofuturism',
+            colors: { primary: '#28093a', accent: '#5A4CBB', background: '#1A0E07', text: '#dddddd' },
+        },
+        archive: {
+            name: 'Archive',
+            colors: { primary: '#7c3f58', accent: '#d4a373', background: '#f8f1ee', text: '#4a2c2a' },
+        },
+        contrast: {
+            name: 'Contrast',
+            colors: { primary: '#8b0000', accent: '#ffd700', background: '#f0f0f0', text: '#000000' },
+        },
+        colorless: {
+            name: 'Colorless',
+            colors: { primary: '#333333', accent: '#999999', background: '#ffffff', text: '#000000' },
+        },
+    };
+
+    const themeOrder = ['gilded', 'legacy', 'afrofuturism', 'archive', 'contrast', 'colorless'];
+
+    const handleSchemeChange = (scheme) => {
+        changeColorScheme(scheme);
+        setCurrentThemeName(scheme);
+        setThemeLabelKey(Date.now()); // Trigger animation by changing key
+    };
+
     const toggleAccessibilityPanel = () => {
         setIsPanelOpen(prev => !prev);
     };
@@ -109,43 +147,38 @@ const AccessibilityPanel = ({ changeFontSize, changeFont, changeColorScheme }) =
                 </div>
 
                 <div className="accessibility-section">
-                    <label>Color Scheme:</label>
-                    <div className="buttons-row">
-                        <button
-                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-legacy"
-                            onClick={() => changeColorScheme('legacy')}
-                            data-scheme="legacy"
-                        >
-                            Legacy
-                        </button>
-<button
-                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-afrofuturism"
-                            onClick={() => changeColorScheme('afrofuturism')}
-                            data-scheme="afrofuturism"
-                        >
-                            Afrofuturism
-                        </button>
-                        <button
-                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-archive"
-                            onClick={() => changeColorScheme('archive')}
-                            data-scheme="archive"
-                        >
-                            Archive
-                        </button>
-                        <button
-                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-contrast"
-                            onClick={() => changeColorScheme('contrast')}
-                            data-scheme="contrast"
-                        >
-                            Contrast
-                        </button>
-                        <button
-                            className="btn btn-sm btn-outline-secondary btn-color-scheme btn-color-scheme-colorless"
-                            onClick={() => changeColorScheme('colorless')}
-                            data-scheme="colorless"
-                        >
-                            Colorless
-                        </button>
+                    <label className="theme-label" key={themeLabelKey}>
+                        Theme: {themesData[currentThemeName]?.name || currentThemeName.charAt(0).toUpperCase() + currentThemeName.slice(1)}
+                    </label>
+                    <div className="buttons-row theme-circles-row">
+                        {themeOrder.map((schemeKey) => {
+                            const theme = themesData[schemeKey];
+                            if (!theme) return null;
+                            const isActive = currentThemeName === schemeKey;
+                            const stripeStyle = {
+                                background: `linear-gradient(
+                                    135deg,
+                                    ${theme.colors.text} 0%, ${theme.colors.text} 35%,
+                                    ${theme.colors.background} 35%, ${theme.colors.background} 50%,
+                                    ${theme.colors.primary} 50%, ${theme.colors.primary} 65%,
+                                    ${theme.colors.accent} 65%, ${theme.colors.accent} 100%
+                                )`,
+                            };
+
+                            return (
+                                <button
+                                    key={schemeKey}
+                                    className={`theme-circle-button ${isActive ? 'active' : ''}`}
+                                    onClick={() => handleSchemeChange(schemeKey)}
+                                    data-scheme={schemeKey}
+                                    aria-label={`Select ${theme.name} theme`}
+                                    style={stripeStyle}
+                                    title={theme.name}
+                                >
+                                    {/* No text inside the button */}
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

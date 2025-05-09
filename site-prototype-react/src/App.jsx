@@ -12,13 +12,13 @@ import Item from './pages/Item';
 import People from './pages/People';
 import Places from './pages/Places';
 import SearchResults from './pages/SearchResults';
-import Timelines from './pages/Timelines'; // Removed Timelines import
-import ArtifactsApparel from './pages/ArtifactsApparel';
-import Exhibits from './pages/Exhibits'; // Import the Exhibits page
-import NotionEmbedPage from './pages/NotionEmbedPage'; // Import the new page
-import Campaign from './pages/Campaign'; // Import the Campaign page
-import LessonPlans from './pages/LessonPlans'; // Import the LessonPlans page
-import BlackPressExhibit from './pages/BlackPressExhibit'; // Import the Black Press Exhibit page
+import Timelines from './pages/Timelines';
+import LegacyWear from './pages/LegacyWear';
+import Exhibits from './pages/Exhibits';
+import NotionEmbedPage from './pages/NotionEmbedPage';
+import Campaign from './pages/Campaign';
+import LessonPlans from './pages/LessonPlans';
+import BlackPressExhibit from './pages/BlackPressExhibit';
 import BlackAnchorsExhibit from './pages/BlackAnchorsExhibit';
 import MissingRemnantsExhibit from './pages/MissingRemnantsExhibit';
 import RedPedagogyExhibit from './pages/RedPedagogyExhibit';
@@ -28,7 +28,7 @@ import TheWomenExhibit from './pages/TheWomenExhibit';
 import VirtualStoreExhibit from './pages/VirtualStoreExhibit';
 import TheAfricanMaskExhibit from './pages/TheAfricanMaskExhibit';
 import TheNegativesExhibit from './pages/TheNegativesExhibit';
-import Layout from './components/Layout'; // Import the Layout component
+import Layout from './components/Layout';
 
 function App() {
     // Font Size Control
@@ -58,7 +58,7 @@ function App() {
     useEffect(() => {
         const savedFontSize = localStorage.getItem('preferredFontSize') || 'medium';
         const savedFontStyle = localStorage.getItem('preferredFontStyle') || 'clear';
-        const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'legacy';
+        const savedColorScheme = localStorage.getItem('preferredColorScheme') || 'gilded';
 
         changeFontSize(savedFontSize);
         changeFont(savedFontStyle);
@@ -81,7 +81,7 @@ function App() {
                 <Route path="places" element={<Places />} />
                 <Route path="searchresults" element={<SearchResults />} />
                 <Route path="timelines" element={<Timelines />} />
-                <Route path="artifacts-apparel" element={<ArtifactsApparel />} />
+                <Route path="legacy-wear" element={<LegacyWear />} />
                 <Route path="exhibits" element={<Exhibits />} />
                 <Route path="notion-embed" element={<NotionEmbedPage />} />
                 <Route path="campaign" element={<Campaign />} />

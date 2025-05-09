@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card, InputGroup, Collapse } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card, InputGroup, Collapse, Alert } from 'react-bootstrap';
 
 // Import images
 import demoSubmissionImg from '../assets/images/demo_submission.jpg';
@@ -25,13 +25,14 @@ const Contribute = () => { // Removed props
         <> {/* Use Fragment instead of div */}
             {/* Removed AccessibilityPanel and Navbar */}
             <main className="container my-5" id="main-content">
-                <h1>Want to be part of the archive?</h1>
-                <p className="lead">Share your story, images, or artifacts to help preserve our collective history for future generations.</p>
 
-                <div>
-                    <i className="fas fa-info-circle me-2"></i>
-                    <strong>Note:</strong> <em>All submissions will be reviewed by our team of archivists before being added to the collection.</em>
-                </div>
+                <Alert variant="info" className="mt-3 mb-5 alert-subtle-info">
+                    This section is a demonstration of archive design and functionality. The items and data presented are for illustrative purposes only.
+                </Alert>
+
+                <h1 >Want to be part of the archive?</h1>
+
+                <p className="lead">Share your story, images, or artifacts to help preserve our collective history for future generations.</p>
 
                 {/* Example Submission Toggle */}
                 <div className="alert alert-info mt-4 d-flex justify-content-between align-items-center" onClick={toggleExample} style={{ cursor: 'pointer' }}>

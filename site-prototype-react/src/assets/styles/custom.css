@@ -1,34 +1,56 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure the body allows the #root to fill it if using min-height on #root */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 /* custom.css */
 
 @import url('https://fonts.googleapis.com/css?family=Exo+2:400,700&subset=cyrillic');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
-/* Base styling */
-:root {
-    --primary-color: #926001;
-    --primary-color-rgb: 146, 96, 1;
-    --secondary-color: #946101;
-    --secondary-color-rgb: 148, 97, 1;
-    --accent-color: #5A4CBB; /* Slightly darker and desaturated lavender for contrast */
-    --accent-color-rgb: 90, 76, 187;
-    --background-color: #1A0E07; /* Darkened background color for legacy theme */
-    --text-color: #dddddd; /* Slightly less bright white */
-    --text-color-rgb: 221, 221, 221;
-    --light-color: #dddddd; /* Slightly less bright white */
-    --border-color: var(--light-color);
-    --card-shadow: 0 6px 10px rgba(255, 255, 255, 0.2); /* Adjusted white shadow for dark background */
-    --btn-shadow: 0 2px 4px rgba(255, 255, 255, 0.2); /* Light shadow for dark background */
-    --card-background-color: #2A1E17; /* Slightly lighter background for cards in legacy theme */
-    --header-glow-color: transparent; /* Default no glow */
-    --background-gradient-other-color: var(--background-color); /* Default to solid color */
+/* Theme styling */
+.gilded-theme {
+    --primary-color: #fcc646;
+    --primary-color-rgb: 252, 198, 70;
+    --secondary-color: #eab33a; /* Slightly desaturated/darker gold */
+    --secondary-color-rgb: 234, 179, 58;
+    --accent-color: #d8c2ef; /* Pale lavender */
+    --accent-color-rgb: 216, 194, 239;
+    --background-color: #fffcf2; /* Very light cream/off-white */
+    --text-color: #4A3B2A; /* Dark brown */
+    --text-color-rgb: 74, 59, 42;
+    --light-color: #ffffff; /* Dark color for text on gold backgrounds */
+    --border-color: #536856; /* Light grayish brown */
+    --card-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    --btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --card-background-color: #ffffff; /* White cards */
+    --header-glow-color: transparent;
+    --background-gradient-other-color: #fff8e1; /* Light yellowish cream for gradient top */
+    --h1-underline-color: var(--primary-color);
 
-    /* Neumorphic style variables */
-    --neumorphic-color-bkg: hsl(0, 0%, 93%); /* Reference background for neumorphic design */
-    --neumorphic-shadow1: rgb(0 0 0 / 0.12); /* Darker shadow for neumorphism */
-    --neumorphic-shadow2: rgb(255 255 255 / 0.7); /* Lighter shadow for neumorphism */
-    --neumorphic-anim-shadow1-hsl: 50deg 12% 15%; /* HSL for animated shadow color 1 */
-    --neumorphic-anim-shadow2-hsl: 135deg 5% 95%; /* HSL for animated shadow color 2 */
+    /* Neumorphic style variables for light theme */
+    --neumorphic-color-bkg: hsl(45, 80%, 95%); /* Light gold/cream */
+    --neumorphic-shadow1: rgba(0, 0, 0, 0.1);
+    --neumorphic-shadow2: rgba(255, 255, 255, 0.8);
+    --neumorphic-anim-shadow1-hsl: 45deg 30% 70%; /* Darker gold/brown for shadow animation */
+    --neumorphic-anim-shadow2-hsl: 45deg 100% 98%; /* Lighter gold/cream for highlight animation */
 }
+.gilded-theme .selected-timeline-card {
+    background-color: #fef5d8 !important; /* A slightly off-white gold */
+}
+
 .legacy-theme {
     --primary-color: #926001;
     --primary-color-rgb: 146, 96, 1;
@@ -46,6 +68,7 @@
     --card-background-color: #2A1E17;
     --header-glow-color: transparent; /* Ensure glow is reset */
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
+    --h1-underline-color: var(--primary-color);
 }
 .legacy-theme .selected-timeline-card {
     background-color: #3c2f25 !important;
@@ -68,6 +91,7 @@
     --card-background-color: #6F4493; /* Slightly lighter background for cards in legacy theme */
     --header-glow-color: #FFD700; /* Gold color for header glow */
     --background-gradient-other-color: #48086d; /* Vibrant purple for top of gradient */
+    --h1-underline-color: #ffffff; /* White underline for Afrofuturism */
 }
 .afrofuturism-theme .selected-timeline-card {
     background-color: #835AA9 !important;
@@ -87,6 +111,7 @@
     --border-color: #e0d6d2;
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle dark shadow */
+    --h1-underline-color: var(--primary-color);
  
     --card-background-color: var(--background-color);
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
@@ -109,6 +134,7 @@
     --light-color: #ffffff; /* white */
     --border-color: #000000; /* black borders */
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --h1-underline-color: var(--primary-color);
 
     --btn-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* More prominent dark shadow */
     --card-background-color: var(--background-color);
@@ -131,6 +157,7 @@
     --text-color-rgb: 0, 0, 0;
     --light-color: #ffffff; /* white */
     --border-color: #cccccc; /* light gray borders */
+    --h1-underline-color: var(--primary-color);
 
     --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --btn-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Very subtle dark shadow */
@@ -193,8 +220,14 @@ body {
 }
 
 h1 {
-    font-size: calc(var(--base-font-size, 1rem) * 2.5) !important;
-    margin-bottom: 1rem;
+    font-size: calc(var(--base-font-size, 1rem) * 2.2) !important; /* Match section-title */
+    font-weight: bold;
+    font-style: italic; /* Added italic style */
+    color: var(--text-color);
+    margin-bottom: 2.5rem !important; /* Match section-title, increased for more space */
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--h1-underline-color); /* Use new variable and thicker border */
+    display: inline-block; /* To make border only as wide as text */
 }
 
 h2 {
@@ -257,6 +290,7 @@ small, .small {
 /* Customize the navbar */
 .navbar {
     background-color: var(--primary-color);
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 5px);
     padding: 0.75rem 0;
 }
 
@@ -296,24 +330,108 @@ small, .small {
 
 
 .navbar-nav .nav-link {
+    position: relative;
+    display: inline-block;
+    /* clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%); */ /* Removed diagonal effect */
     color: var(--light-color) !important;
-    padding: 0.3rem 0.8rem; /* Reduced padding */
-    margin: 0 0.25rem;
-    transition: all 0.3s ease;
-    border-radius: 20px; /* Increased border-radius for more rounded edges */
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: transparent !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease, text-shadow 0.3s ease; /* Added text-shadow transition */
+    border-radius: 25px; /* Default rounded oval shape */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Added text shadow for presence */
+    font-weight: bold; /* Make navbar text bold */
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    /* Removed transform: scale(1.05); */
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: var(--light-color) !important; /* Ensure text color remains light on hover */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Slightly enhance shadow on hover */
+    /* filter: brightness(1.2); */ /* Optional: remove or adjust brightness filter */
+    border-radius: 25px; /* Ensure rounded oval shape on hover */
 }
 
 /* Enhanced active navigation state */
 .navbar-nav .nav-link.active {
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly reduced opacity */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Reduced spread and opacity */
-    /* Removed transform: scale(1.05); */
+    background-color: var(--secondary-color) !important;
+    color: var(--background-color) !important;
+    /* box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) !important; */ /* Optional: remove or adjust shadow */
+    border-radius: 25px; /* Ensure rounded oval shape for active items */
+}
+
+/* Styling for NavDropdown parent to help with hover gap */
+.navbar-nav .nav-item.dropdown {
+    /* Adding a small bottom margin to the dropdown toggle itself can sometimes help
+       if the issue is the trigger area not extending enough.
+       Alternatively, we adjust the dropdown-menu position. */
+}
+
+/* Dropdown Menu Styling - Glassmorphism */
+.navbar-nav .dropdown-menu {
+    background-color: rgba(var(--primary-color-rgb), 0.3) !important; /* Semi-transparent background based on primary color */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important; /* For Safari */
+    border: 1px solid rgba(var(--light-color-rgb, 255, 255, 255), 0.18) !important; /* Subtle border */
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    padding-top: 0 !important; /* Remove top padding */
+    padding-bottom: 0 !important; /* Remove bottom padding */
+    padding-left: 0 !important; /* Remove side padding if items handle their own */
+    padding-right: 0 !important; /* Remove side padding if items handle their own */
+    margin-top: -2px !important; /* Attempt to close the gap. Adjust as needed. */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: var(--light-color) !important;
+    background-color: transparent !important;
+    padding: 0.5rem 1rem !important; /* Items will have their own horizontal padding */
+    transition: background-color 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); /* Omnidirectional text shadow for dropdown items */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-nav .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(var(--light-color-rgb, 255, 255, 255), 0.2) !important;
+    color: var(--light-color) !important; /* Keep text light or adjust as needed */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item.active {
+    background-color: rgba(var(--secondary-color-rgb), 0.5) !important;
+    color: var(--background-color) !important;
+}
+
+/* Gilded Theme Dropdown Overrides for better contrast */
+.gilded-theme .navbar-nav .dropdown-menu {
+    background-color: rgba(var(--primary-color-rgb), 0.65) !important; /* Increased opacity for Gilded theme */
+    /* backdrop-filter and other properties can remain the same or be tweaked if needed */
+}
+
+.gilded-theme .navbar-nav .dropdown-menu .dropdown-item {
+    color: var(--text-color) !important; /* Use darker text color for Gilded theme */
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.3); /* Lighter shadow for dark text if needed, or adjust existing */
+}
+
+.gilded-theme .navbar-nav .dropdown-menu .dropdown-item:hover,
+.gilded-theme .navbar-nav .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(var(--primary-color-rgb), 0.8) !important; /* Darker hover for Gilded */
+    color: var(--text-color) !important;
+}
+
+.gilded-theme .navbar-nav .dropdown-menu .dropdown-item.active {
+    background-color: rgba(var(--secondary-color-rgb), 0.7) !important; /* Adjusted active for Gilded */
+    color: var(--text-color) !important; /* Ensure text is dark */
+}
+
+/* Attempt to standardize dropdown positioning */
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    left: 50% !important; /* Position the left edge of the menu at the center of the parent toggle */
+    transform: translateX(-50%) !important; /* Shift the menu left by half of its own width */
+    right: auto !important; /* Ensure it doesn't try to align to the right */
+    /* Note: This attempts to center the dropdown menu under its toggle.
+       The visual result can still vary based on the menu's content width. */
 }
 
 /* Footer styling */
@@ -341,7 +459,7 @@ footer {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card img {
+.card img:not(.card-content-img) {
     object-fit: cover;
     height: 200px;
     border-top-left-radius: 15px !important;
@@ -363,7 +481,6 @@ footer {
 /* Ensure text color within main content and card bodies respects the theme */
 main {
     color: var(--text-color);
-    background: linear-gradient(to bottom, var(--background-gradient-other-color, var(--background-color)), var(--background-color));
 }
 
 .card-body {
@@ -375,6 +492,13 @@ main {
     height: auto; /* Allow full height */
     object-fit: contain;
     max-height: none;
+}
+
+/* Timeline selection cards - smaller height */
+.timeline-selection-card img {
+    height: 100px !important; /* Half the standard card image height */
+    object-fit: cover !important; /* Ensure image is cropped to fit */
+    object-position: center; /* Center the image */
 }
 
 /* Button styling */
@@ -452,7 +576,8 @@ main {
     top: 150px; /* Adjust top to be below the button (approximate) */
     right: -360px; /* Wider panel to accommodate larger buttons */
     width: 360px;
-    background-color: var(--light-color);
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
     border-radius: 10px;
     padding: 20px;
     z-index: 1000;
@@ -510,72 +635,70 @@ main {
     font-family: 'Courier New', 'Consolas', monospace !important;
 }
 
-.btn-color-scheme {
-    flex: 1;
-    position: relative;
-    padding: 0.5rem;
+/* Styles for Theme Swapper */
+.theme-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeEffect 0.5s ease-in-out;
 }
 
-.btn-color-scheme-legacy {
-    background-color: #1A0E07 !important;
-    color: #dddddd !important;
-border-color: #926001 !important;
-}
-.btn-color-scheme-afrofuturism {
-    background-color: #1A0E07 !important; /* afrofuturism-theme --background-color */
-    color: #fac768 !important; /* afrofuturism-theme --primary-color for text */
-    border-color: #EB5F24 !important; /* afrofuturism-theme --secondary-color for border */
+@keyframes fadeEffect {
+    0% { opacity: 0; transform: translateY(-5px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-.btn-color-scheme-afrofuturism:hover {
-    background-color: #1A0E07 !important;
-    color: #fac768 !important;
-    border-color: #EB5F24 !important;
-    filter: brightness(1.2);
-}
+/* Apply to the element that has BOTH .buttons-row and .theme-circles-row */
+/* Apply to the element that has BOTH .buttons-row and .theme-circles-row */
+.accessibility-section .buttons-row.theme-circles-row {
+    display: flex; /* Explicitly set display */
+    flex-wrap: wrap; /* Explicitly set wrap */
+    gap: 5px; /* Explicitly set gap, should match the general .buttons-row */
     
-
-
-.btn-color-scheme-legacy:hover {
-    background-color: #1A0E07 !important; /* Keep same on hover */
-    color: #dddddd !important;
-    border-color: #926001 !important;
+    width: 160px;       /* Target width for 3 buttons (50px each) + 2 gaps (5px each) */
+    min-width: 160px;   /* Force minimum width */
+    max-width: 160px;   /* Force maximum width */
+    
+    box-sizing: border-box;
+    margin-left: auto;   /* Center the block */
+    margin-right: auto;  /* Center the block */
+    padding: 0;          /* Ensure no padding interferes with width */
+    
+    justify-content: center; /* Centers items on a line if not full (e.g., last row of 2) */
+    align-items: flex-start; /* Align rows to the top */
 }
 
-.btn-color-scheme-archive {
-    background-color: #f8f1ee !important;
-    color: #4a2c2a !important;
-    border-color: #7c3f58 !important;
+.theme-circle-button {
+    width: 50px; /* Increased size */
+    height: 50px; /* Increased size */
+    border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+    margin: 0; /* Remove individual margins, rely on parent's gap */
+    padding: 0; /* Remove default button padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none; /* Remove default focus outline */
+    flex: 0 0 50px; /* flex-grow: 0, flex-shrink: 0, flex-basis: 50px */
+    box-sizing: border-box;
 }
 
-.btn-color-scheme-archive:hover {
-    background-color: #f8f1ee !important; /* Keep same on hover */
-    color: #4a2c2a !important;
-    border-color: #7c3f58 !important;
+.theme-circle-button:hover {
+    transform: scale(1.1);
 }
 
-.btn-color-scheme-contrast {
-    background-color: #f0f0f0 !important;
-    color: #000000 !important;
-    border-color: #8b0000 !important;
+.theme-circle-button.active {
+    border-color: black;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Highlight active button */
+    transform: scale(1.05); /* Slightly smaller scale than hover to differentiate */
 }
 
-.btn-color-scheme-contrast:hover {
-    background-color: #f0f0f0 !important; /* Keep same on hover */
-    color: #000000 !important;
-    border-color: #8b0000 !important;
-}
-
-.btn-color-scheme-colorless {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border-color: #333333 !important;
-}
-
-.btn-color-scheme-colorless:hover {
-    background-color: #ffffff !important; /* Keep same on hover */
-    color: #000000 !important;
-    border-color: #333333 !important;
+/* Ensure buttons in the row don't have default button styling if .btn class was previously used */
+.accessibility-section .buttons-row .theme-circle-button {
+    flex: 0 0 auto; /* Don't grow, don't shrink, base on auto size (width/height) */
+    background-color: transparent !important; /* Override any btn background */
+    color: transparent !important; /* Hide any text that might accidentally appear */
 }
 
 /* Custom form styling */
@@ -844,6 +967,39 @@ img {
     border-radius: 8px;
 }
 
+/* Card content images - for images inside card body that need rounded corners all around */
+.card-body .card-content-img,
+.card .card-body img.card-content-img {
+    border-radius: 15px !important; /* Override the default card img styling */
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    object-fit: contain !important;
+    max-height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}
+
+/* Partner organization logos - specific styling for consistent height and positioning */
+.partner-logo {
+    height: 200px !important; /* Fixed height for all partner logos */
+    max-width: 100% !important; /* Ensure it doesn't exceed the card width */
+    width: auto !important;
+    object-fit: contain !important;
+    padding: 10px !important;
+    margin: 0 auto !important; /* Center horizontally */
+    display: block !important; /* Changed from flex to block */
+}
+
+/* Container for partner logos to ensure proper centering and containment */
+.card-img-bottom.partner-logo {
+    overflow: hidden !important;
+    text-align: center !important;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .example-side {
@@ -863,13 +1019,17 @@ img {
 }
 /* Styling for exhibit images */
 .exhibit-image {
-    display: block; /* Ensure it behaves as a block element */
     max-height: 600px;
     width: auto; /* Allow width to be determined by aspect ratio and max-height */
     max-width: 100%; /* Ensure image does not exceed container width */
     object-fit: contain; /* Maintain aspect ratio while containing within the area */
     border-radius: 8px; /* Apply rounded corners */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add a white glow effect */
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.22); /* More noticeable shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.exhibit-image:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 20px 50px rgba(0, 0, 0, 0.28); /* More noticeable enhanced shadow on hover */
 }
 /* Styling for the exhibit gallery container */
 .exhibit-gallery {
@@ -952,77 +1112,66 @@ select option {
   color: var(--text-color) !important; /* Force theme text color */
 }
 /* Social media icon styling */
-.social-icon-link {
+.social-icon-link,
+.social-icon-link:visited,
+.social-icon-link:active,
+.social-icon-link.active { /* Explicitly target any .active class that might be applied */
     color: var(--light-color) !important; /* Match navbar text color */
-    margin-left: 0.5rem; /* Space out icons */
+    background-color: transparent !important; /* Ensure no background color on active/visited */
+    box-shadow: none !important; /* Remove any box-shadow */
+    font-weight: normal !important; /* Ensure font weight is normal */
+    margin-left: 0.25rem; /* Reduced space out icons */
     transition: color 0.3s ease;
 }
 
 .social-icon-link:hover {
     color: var(--accent-color) !important; /* Change color on hover */
+    background-color: transparent !important; /* Ensure no background change on hover */
 }
 /* Add spacing below the main page header */
 main > .container > * > :is(h1, h2, h3, h4, h5, h6):first-child {
     margin-bottom: 3rem;
 }
-/* Navigation Cards on Home Page - Neumorphic Style */
+/* Navigation Cards on Home Page - Image Background Style */
 .nav-card {
-    position: relative;
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /* Matching example */
-    border-radius: 24px; /* Matching example */
-    display: grid; /* Matching example */
-    place-items: center; /* Matching example */
-    /* width: 400px; /* Let Bootstrap handle width via Col md={4} */
-    /* height: 300px; /* Let content determine height or use h-100 */
-    isolation: isolate; /* Matching example */
-    background-color: var(--neumorphic-color-bkg); /* Use neumorphic background */
-    border: none; /* Remove existing border */
+    position: relative; /* For positioning pseudo-element and card-body */
+    border-radius: 15px !important;
+    overflow: hidden;
+    /* background-size, background-position, and filter will be on ::before */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions for direct .nav-card properties */
     cursor: pointer;
-    transition: all 0.35s; /* For hover/active states if needed beyond pseudo-elements */
+    border: 1px solid transparent;
+    /* h-100 class in JSX handles height */
+    margin-bottom: 0 !important; /* Override default card margin to let Bootstrap gutters control spacing */
 }
 
-.nav-card::after {
-    border-radius: inherit;
-    z-index: -1;
-    content: "";
+.nav-card::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    opacity: 0.7; /* Adjusted for initial visibility, example was 0.3 */
-    transition: all 0.35s;
-    box-shadow: 10px 10px 12px var(--neumorphic-shadow1), /* Slightly softer shadow */
-                -12px -12px 16px var(--neumorphic-shadow2); /* Slightly softer shadow */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color)); /* Gradient background */
+    /* background-size and background-position are not needed for gradient */
+    /* filter is removed */
+    z-index: 0; /* Behind the card-body content */
+    border-radius: inherit; /* Match parent's border-radius */
+    transition: opacity 0.3s ease; /* Optional: transition for hover effect on gradient */
 }
 
-.nav-card:hover::after {
-    opacity: 1;
+.nav-card:hover::before {
+    opacity: 0.85; /* Example hover effect: slightly fade the gradient */
 }
 
-.nav-card:active::after {
-    /* Simulating a pressed effect by slightly insetting the shadow */
-    box-shadow: inset 5px 5px 8px var(--neumorphic-shadow1),
-                inset -5px -5px 8px var(--neumorphic-shadow2),
-                5px 5px 8px var(--neumorphic-shadow1), /* Keep some outer shadow */
-                -5px -5px 8px var(--neumorphic-shadow2); /* Keep some outer shadow */
-    opacity: 0.9;
+.nav-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for the card itself */
 }
 
-.nav-card .card-title {
-    font-size: calc(var(--base-font-size, 1rem) * 1.5) !important; /* Adjusted from 1.75 */
-    font-weight: bold;
-    font-style: normal; /* Removed italic to match example's simplicity */
-    color: #333; /* Darker text for better contrast on light neumorphic background */
-    margin-bottom: 0.5rem;
-    /* Replace text-stroke with text-shadow for an outer stroke effect */
-    text-shadow:
-        -1px -1px 0 white,
-         1px -1px 0 white,
-        -1px  1px 0 white,
-         1px  1px 0 white;
-}
-
-.nav-card .card-text { /* Assuming Card.Text is used, style it for neumorphic */
-    color: #555; /* Slightly lighter than title */
-    font-size: calc(var(--base-font-size, 1rem) * 0.9) !important;
+/* Ensure other pseudo-elements (like from old neumorphic) are explicitly off */
+.nav-card::after {
+    content: none !important;
 }
 
 .nav-card .card-body {
@@ -1031,9 +1180,28 @@ main > .container > * > :is(h1, h2, h3, h4, h5, h6):first-child {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 150px; /* Adjusted min-height */
-    padding: 1rem; /* Adjusted padding */
-    width: 100%; /* Ensure card body takes full width of the card */
+    padding: 1rem;
+    width: 100%;
+    position: relative; /* To sit above ::before */
+    z-index: 1; /* Ensure content is above the ::before pseudo-element */
+    background-color: rgba(0, 0, 0, 0.2) !important; /* Overlay on card-body for text readability */
+    border-radius: 0 0 15px 15px; /* Match card's bottom rounding */
+}
+
+/* Removed .nav-card-text-box rule */
+
+.nav-card .card-title {
+    font-size: calc(var(--base-font-size, 1rem) * 1.3) !important;
+    font-weight: bold;
+    color: white !important; /* Explicitly white */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+    margin-bottom: 0.4rem !important;
+}
+
+.nav-card .card-text {
+    font-size: calc(var(--base-font-size, 1rem) * 0.85) !important;
+    color: white !important; /* Explicitly white */
+    margin-bottom: 0 !important; /* No margin if it's the last item in the box */
 }
 /* Styles for selected timeline cards */
 /* .selected-timeline-card is now defined per-theme */
@@ -1247,4 +1415,45 @@ in and out of the screen */
     100% {
         opacity: 0;
     }
+}
+/* Home Page Section Titles */
+.section-title {
+    font-size: calc(var(--base-font-size, 1rem) * 2.2) !important; /* Slightly smaller than h1 */
+    font-weight: bold;
+/* Two-row desktop navbar layout */
+.navbar .navbar-rows {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.navbar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.25rem 0;
+}
+.navbar-row-core {
+    margin-bottom: 0.5rem;
+}
+.core-links,
+.secondary-links,
+.social-icons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.core-links .nav-link,
+.secondary-links .nav-link {
+    white-space: nowrap;
+    margin: 0 0.5rem !important;
+}
+.social-icons .nav-link {
+    margin: 0 0.25rem;
+}
+    color: var(--text-color);
+    margin-bottom: 2rem !important; /* More space below title */
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block; /* To make border only as wide as text */
 }
