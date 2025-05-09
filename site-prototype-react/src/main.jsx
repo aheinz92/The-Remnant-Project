@@ -9,7 +9,7 @@ import './assets/styles/custom.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter> {/* Wrap App with BrowserRouter */}
+        <BrowserRouter basename="/The-Remnant-Project"> {/* Wrap App with BrowserRouter */}
             <ScrollToTop />
             <App />
         </BrowserRouter>
