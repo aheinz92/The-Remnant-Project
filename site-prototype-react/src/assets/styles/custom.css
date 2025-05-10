@@ -46,6 +46,17 @@ body {
     --neumorphic-shadow2: rgba(255, 255, 255, 0.8);
     --neumorphic-anim-shadow1-hsl: 45deg 30% 70%; /* Darker gold/brown for shadow animation */
     --neumorphic-anim-shadow2-hsl: 45deg 100% 98%; /* Lighter gold/cream for highlight animation */
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #fffef7, #fbfaff); /* Even more subtle light cream to very pale lavender gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--primary-color);
+    --nav-card-hover-text-color: var(--secondary-color);
+    --nav-card-hover-title-color: var(--secondary-color);
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.25), 0 1px 3px rgba(0,0,0,0.04); /* Subtle gold glow + soft shadow - Lavender glow removed */
+    --nav-card-hover-box-shadow: 0 0 12px rgba(var(--primary-color-rgb), 0.4), 0 2px 5px rgba(0,0,0,0.07); /* Enhanced gold glow + soft shadow - Lavender glow removed */
 }
 .gilded-theme .selected-timeline-card {
     background-color: #fef5d8 !important; /* A slightly off-white gold */
@@ -69,6 +80,17 @@ body {
     --header-glow-color: transparent; /* Ensure glow is reset */
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
     --h1-underline-color: var(--primary-color);
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #3a2d25, #362921); /* Subtle dark gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--primary-color);
+    --nav-card-hover-text-color: var(--secondary-color);
+    --nav-card-hover-title-color: var(--secondary-color);
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.3), 0 2px 4px rgba(255,255,255,0.05); /* Subtle primary color glow + light shadow */
+    --nav-card-hover-box-shadow: 0 0 12px rgba(var(--primary-color-rgb), 0.5), 0 3px 6px rgba(255,255,255,0.08);
 }
 .legacy-theme .selected-timeline-card {
     background-color: #3c2f25 !important;
@@ -92,6 +114,17 @@ body {
     --header-glow-color: #FFD700; /* Gold color for header glow */
     --background-gradient-other-color: #48086d; /* Vibrant purple for top of gradient */
     --h1-underline-color: #ffffff; /* White underline for Afrofuturism */
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #7e55a3, #865dac); /* Subtle purple gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--secondary-color); /* Orange for title */
+    --nav-card-hover-text-color: #f0c4b3; /* Lighter orange for hover */
+    --nav-card-hover-title-color: #f0c4b3;
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 8px rgba(var(--secondary-color-rgb), 0.3), 0 2px 4px rgba(var(--secondary-color-rgb),0.1); /* Orange glow */
+    --nav-card-hover-box-shadow: 0 0 12px rgba(var(--secondary-color-rgb), 0.5), 0 3px 6px rgba(var(--secondary-color-rgb),0.15);
 }
 .afrofuturism-theme .selected-timeline-card {
     background-color: #835AA9 !important;
@@ -115,6 +148,17 @@ body {
  
     --card-background-color: var(--background-color);
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #fbf6f3, #fcf9f6); /* Subtle light cream gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--primary-color);
+    --nav-card-hover-text-color: var(--secondary-color);
+    --nav-card-hover-title-color: var(--secondary-color);
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 7px rgba(var(--primary-color-rgb), 0.2), 0 1px 3px rgba(0,0,0,0.04); /* Subtle burgundy glow */
+    --nav-card-hover-box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.35), 0 2px 5px rgba(0,0,0,0.07);
 }
 .archive-theme .selected-timeline-card {
     background-color: #ede4e0 !important;
@@ -139,6 +183,17 @@ body {
     --btn-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* More prominent dark shadow */
     --card-background-color: var(--background-color);
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #f5f5f5, #f8f8f8); /* Subtle light gray gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--primary-color);
+    --nav-card-hover-text-color: var(--secondary-color);
+    --nav-card-hover-title-color: var(--secondary-color);
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.25), 0 2px 5px rgba(0,0,0,0.1); /* Red glow */
+    --nav-card-hover-box-shadow: 0 0 12px rgba(var(--primary-color-rgb), 0.4), 0 3px 7px rgba(0,0,0,0.15);
 }
 .contrast-theme .selected-timeline-card {
     background-color: #dcdcdc !important;
@@ -163,6 +218,17 @@ body {
     --btn-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Very subtle dark shadow */
     --card-background-color: var(--background-color);
     --background-gradient-other-color: var(--background-color); /* Default to solid color */
+
+    /* Nav Card Specific Variables */
+    --nav-card-bg: linear-gradient(to bottom, #fdfdfd, #fefefe); /* Very subtle off-white gradient */
+    --nav-card-text-color: var(--text-color);
+    --nav-card-title-color: var(--primary-color);
+    --nav-card-hover-text-color: var(--secondary-color);
+    --nav-card-hover-title-color: var(--secondary-color);
+    --nav-card-border: none;
+    --nav-card-hover-border: none;
+    --nav-card-box-shadow: 0 0 6px rgba(var(--primary-color-rgb), 0.15), 0 1px 2px rgba(0,0,0,0.05); /* Subtle gray glow */
+    --nav-card-hover-box-shadow: 0 0 9px rgba(var(--primary-color-rgb), 0.25), 0 2px 4px rgba(0,0,0,0.08);
 }
 .colorless-theme .selected-timeline-card {
     background-color: #f0f0f0 !important;
@@ -1134,39 +1200,36 @@ main > .container > * > :is(h1, h2, h3, h4, h5, h6):first-child {
 }
 /* Navigation Cards on Home Page - Image Background Style */
 .nav-card {
-    position: relative; /* For positioning pseudo-element and card-body */
+    position: relative;
     border-radius: 15px !important;
     overflow: hidden;
-    /* background-size, background-position, and filter will be on ::before */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions for direct .nav-card properties */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Adjusted transitions */
     cursor: pointer;
-    border: 1px solid transparent;
-    /* h-100 class in JSX handles height */
+    border: var(--nav-card-border, none) !important; /* Use variable, default none */
     margin-bottom: 0 !important; /* Override default card margin to let Bootstrap gutters control spacing */
+    background: var(--nav-card-bg, var(--card-background-color)) !important; /* Use variable, changed to background shorthand */
+    box-shadow: var(--nav-card-box-shadow, 0 1px 3px rgba(0,0,0,0.04)) !important; /* Default shadow if var not set */
 }
 
 .nav-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color)); /* Gradient background */
-    /* background-size and background-position are not needed for gradient */
-    /* filter is removed */
-    z-index: 0; /* Behind the card-body content */
-    border-radius: inherit; /* Match parent's border-radius */
-    transition: opacity 0.3s ease; /* Optional: transition for hover effect on gradient */
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: none; /* Remove gradient */
+    z-index: 0;
+    border-radius: inherit;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Ensure it doesn't interfere with clicks */
 }
 
 .nav-card:hover::before {
-    opacity: 0.85; /* Example hover effect: slightly fade the gradient */
+    opacity: 1; /* No visual change if ::before has no background */
 }
 
 .nav-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for the card itself */
+    /* transform: scale(1.03); */ /* Removed for less buttony feel */
+    box-shadow: var(--nav-card-hover-box-shadow, 0 2px 5px rgba(0,0,0,0.07)) !important; /* Default hover shadow if var not set */
+    border: var(--nav-card-hover-border, none) !important; /* Use variable, default none */
 }
 
 /* Ensure other pseudo-elements (like from old neumorphic) are explicitly off */
@@ -1182,10 +1245,10 @@ main > .container > * > :is(h1, h2, h3, h4, h5, h6):first-child {
     text-align: center;
     padding: 1rem;
     width: 100%;
-    position: relative; /* To sit above ::before */
-    z-index: 1; /* Ensure content is above the ::before pseudo-element */
-    background-color: rgba(0, 0, 0, 0.2) !important; /* Overlay on card-body for text readability */
-    border-radius: 0 0 15px 15px; /* Match card's bottom rounding */
+    position: relative;
+    z-index: 1;
+    background-color: transparent !important; /* Remove overlay */
+    /* border-radius for card-body might not be needed if card itself is rounded and body is transparent */
 }
 
 /* Removed .nav-card-text-box rule */
@@ -1193,15 +1256,28 @@ main > .container > * > :is(h1, h2, h3, h4, h5, h6):first-child {
 .nav-card .card-title {
     font-size: calc(var(--base-font-size, 1rem) * 1.3) !important;
     font-weight: bold;
-    color: white !important; /* Explicitly white */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+    color: var(--nav-card-title-color, var(--text-color)) !important; /* Use variable */
+    text-shadow: none; /* Removed shadow */
     margin-bottom: 0.4rem !important;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .nav-card .card-text {
     font-size: calc(var(--base-font-size, 1rem) * 0.85) !important;
-    color: white !important; /* Explicitly white */
-    margin-bottom: 0 !important; /* No margin if it's the last item in the box */
+    color: var(--nav-card-text-color, var(--text-color)) !important; /* Use variable */
+    margin-bottom: 0 !important;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* Hover effects for text to make it link-like */
+.nav-card:hover .card-title {
+    color: var(--nav-card-hover-title-color, var(--primary-color)) !important;
+    text-decoration: underline;
+}
+
+.nav-card:hover .card-text {
+    color: var(--nav-card-hover-text-color, var(--primary-color)) !important;
+    text-decoration: underline;
 }
 /* Styles for selected timeline cards */
 /* .selected-timeline-card is now defined per-theme */
