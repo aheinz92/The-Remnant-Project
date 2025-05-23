@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Import images
@@ -33,6 +33,9 @@ const Home = () => { // Removed props
                         style={{ maxHeight: '400px', borderRadius: '15px' }}
                     />
                     <p className="lead">A digital archive preserving and celebrating Washington State's diverse historical narratives</p>
+                    <Alert variant="info" className="mt-4">
+                        This website was part of a presentation of a 2024-25 capstone design project for the University of Washington iSchool, and is no longer maintained here. It's just a snapshot. Thanks!
+                    </Alert>
                 </section>
 
                 {/* Site Navigation Cards Section */}
